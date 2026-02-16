@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, FolderGit2, Sun, Moon, Rss, Menu, X } from 'lucide-react';
+import { Home, FolderGit2, Sun, Moon, Menu, X } from 'lucide-react';
 import { siteConfig } from '../site.config';
 import { useTheme } from '../context/ThemeContext';
 
