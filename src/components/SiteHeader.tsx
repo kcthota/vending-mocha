@@ -1,0 +1,46 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Home, FolderGit2, Sun, Moon, Rss, Menu, X } from 'lucide-react';
+import { siteConfig } from '../site.config';
+import { useTheme } from '../context/ThemeContext';
+
+import projects from '../projects.json';
+
+export default function SiteHeader() {
+    const { theme, toggleTheme } = useTheme();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
+
+    return (
+        <header className="main-header">
+            <h1 className="site-title"><Link to="/" onClick={closeMenu}>{siteConfig.title}</Link></h1>
+
+            <div className="nav-container">
+                <nav className={`top-nav ${isMenuOpen ? 'active' : ''}`}>
+                    <Link to="/" onClick={closeMenu}>
+                        <Home size={18} />
+                        <span>Home</span>
+                    </Link>
+                    {projects.length > 0 && (
+                        <Link to="/projects" onClick={closeMenu}>
+                            <FolderGit2 size={18} />
+                            <span>Projects</span>
+                        </Link>
+                    )}
+                </nav>
+
+                <div className="header-actions">
+                    <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
+                        {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                    </button>
+
+                    <button className="hamburger-menu" onClick={toggleMenu} aria-label="Toggle menu">
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
+            </div>
+        </header>
+    );
+}

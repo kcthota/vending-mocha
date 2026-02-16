@@ -1,0 +1,47 @@
+name: Regenerate dist
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - 'dist/**'
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all projects
+        run: npm run build:all
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Force add docs because it is ignored
+          git add -f docs/
+
+          # Check if there are any staged changes
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: update docs artifacts [skip ci]"
+            git push origin main
+          else
+            echo "No changes in docs/ directory"
+          fi
