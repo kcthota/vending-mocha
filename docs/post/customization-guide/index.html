@@ -111,67 +111,75 @@
               </div>
             </div>
           </header>
-          <section class="projects-section">
-            <h2>Projects</h2>
-            <div class="project-grid">
-              <div class="project-card">
-                <h3>
-                  <a
-                    href="https://github.com/yourusername/vending-mocha"
-                    target="_blank"
-                    >Vending Mocha</a
-                  >
-                </h3>
-                <p>
-                  A lightweight, personal blogging framework built with React
-                  and Vite.
-                </p>
-                <p class="project-status">🚀 Active</p>
-                <a
-                  class="btn"
-                  href="https://github.com/yourusername/vending-mocha"
-                  target="_blank"
-                  >View Project</a
-                >
-              </div>
-              <div class="project-card">
-                <h3>
-                  <a href="https://example.com/task-master" target="_blank"
-                    >Task Master 3000</a
-                  >
-                </h3>
-                <p>
-                  A productivity application for managing daily tasks and goals
-                  efficiently.
-                </p>
-                <p class="project-status">🚀 Active</p>
-                <a
-                  class="btn"
-                  href="https://example.com/task-master"
-                  target="_blank"
-                  >View Project</a
-                >
-              </div>
-              <div class="project-card">
-                <h3>
-                  <a href="https://example.com/legacy-api" target="_blank"
-                    >Legacy API Wrapper</a
-                  >
-                </h3>
-                <p>
-                  An old library I wrote back in 2018. No longer maintained but
-                  good for reference.
-                </p>
-                <p class="project-status">💀 Dead</p>
-                <a
-                  class="btn"
-                  href="https://example.com/legacy-api"
-                  target="_blank"
-                  >View Project</a
-                >
-              </div>
-            </div>
-          </section>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": "How to Customize Vending Mocha 🎨",
+              "datePublished": "2024-01-03",
+              "description": "A quick guide on how to update the configuration, styling, and content of your new blog.",
+              "author": {
+                "@type": "Person",
+                "name": "Vending Mocha",
+                "url": "https://janedoe.com"
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://janedoe.com/post/customization-guide"
+              }
+            }
+          </script>
+          <header>
+            <h1>How to Customize Vending Mocha 🎨</h1>
+            <div class="meta"><span>January 03, 2024</span></div>
+          </header>
+          <div class="markdown-content">
+            <h1>Customization Guide</h1>
+            <p>
+              So you&#x27;ve cloned <strong>Vending Mocha</strong>. What&#x27;s
+              next? Here is a quick guide to making it your own.
+            </p>
+            <h2>1. Update Configuration</h2>
+            <p>
+              Open <code>src/site.config.ts</code> and update the following:
+            </p>
+            <ul>
+              <li><strong>title</strong>: Your name or site title.</li>
+              <li>
+                <strong>description</strong>: A short bio or site description.
+              </li>
+              <li><strong>url</strong>: Your website URL (used for SEO).</li>
+              <li>
+                <strong>theme</strong>: Customize colors for light and dark
+                modes.
+              </li>
+            </ul>
+            <pre><code class="language-typescript">export const siteConfig = {
+    title: &quot;My Awesome Blog&quot;,
+    // ...
+}
+</code></pre>
+            <h2>2. Add Your Projects</h2>
+            <p>
+              Head over to <code>src/projects.json</code> and add your own
+              projects. The schema is simple:
+            </p>
+            <pre><code class="language-json">{
+    &quot;name&quot;: &quot;My Project&quot;,
+    &quot;description&quot;: &quot;What is it?&quot;,
+    &quot;link&quot;: &quot;https://github.com/...&quot;,
+    &quot;status&quot;: &quot;active&quot; // active, dead, inactive
+}
+</code></pre>
+            <h2>3. Write Posts</h2>
+            <p>
+              Just add new <code>.md</code> files to <code>src/posts/</code>.
+              The filename becomes the slug (e.g.,
+              <code>src/posts/my-post.md</code> -&gt;
+              <code>/post/my-post</code>).
+            </p>
+            <p>That&#x27;s it! You&#x27;re ready to deploy. 🚀</p>
+          </div>
         </div>
       </div>
       <footer class="container footer-container">

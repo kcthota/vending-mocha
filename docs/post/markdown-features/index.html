@@ -20,6 +20,7 @@
 
   <body>
     <div id="root">
+      <link rel="preload" as="image" href="/images/profile.png" />
       <div class="app-wrapper container">
         <div class="blog-container">
           <header class="main-header">
@@ -111,67 +112,97 @@
               </div>
             </div>
           </header>
-          <section class="projects-section">
-            <h2>Projects</h2>
-            <div class="project-grid">
-              <div class="project-card">
-                <h3>
-                  <a
-                    href="https://github.com/yourusername/vending-mocha"
-                    target="_blank"
-                    >Vending Mocha</a
-                  >
-                </h3>
-                <p>
-                  A lightweight, personal blogging framework built with React
-                  and Vite.
-                </p>
-                <p class="project-status">🚀 Active</p>
-                <a
-                  class="btn"
-                  href="https://github.com/yourusername/vending-mocha"
-                  target="_blank"
-                  >View Project</a
-                >
-              </div>
-              <div class="project-card">
-                <h3>
-                  <a href="https://example.com/task-master" target="_blank"
-                    >Task Master 3000</a
-                  >
-                </h3>
-                <p>
-                  A productivity application for managing daily tasks and goals
-                  efficiently.
-                </p>
-                <p class="project-status">🚀 Active</p>
-                <a
-                  class="btn"
-                  href="https://example.com/task-master"
-                  target="_blank"
-                  >View Project</a
-                >
-              </div>
-              <div class="project-card">
-                <h3>
-                  <a href="https://example.com/legacy-api" target="_blank"
-                    >Legacy API Wrapper</a
-                  >
-                </h3>
-                <p>
-                  An old library I wrote back in 2018. No longer maintained but
-                  good for reference.
-                </p>
-                <p class="project-status">💀 Dead</p>
-                <a
-                  class="btn"
-                  href="https://example.com/legacy-api"
-                  target="_blank"
-                  >View Project</a
-                >
-              </div>
-            </div>
-          </section>
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": "Markdown Features Demo 📝",
+              "datePublished": "2024-01-02",
+              "description": "A demonstration of the Markdown features supported by Vending Mocha, including code blocks, lists, and formatting.",
+              "author": {
+                "@type": "Person",
+                "name": "Vending Mocha",
+                "url": "https://janedoe.com"
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://janedoe.com/post/markdown-features"
+              }
+            }
+          </script>
+          <header>
+            <h1>Markdown Features Demo 📝</h1>
+            <div class="meta"><span>January 02, 2024</span></div>
+          </header>
+          <div class="markdown-content">
+            <h2>Markdown Features</h2>
+            <p>
+              <strong>Vending Mocha</strong> isn&#x27;t just about text; it
+              supports a wide range of Markdown features to help you write rich
+              content.
+            </p>
+            <h3>Typography</h3>
+            <p>
+              You can use <strong>bold</strong>, <em>italics</em>, and
+              <del>strikethrough</del> text.
+            </p>
+            <blockquote>
+              <p>
+                &quot;Blockquotes are great for emphasizing important
+                information or quoting sources.&quot;
+              </p>
+            </blockquote>
+            <h3>Lists</h3>
+            <h4>Unordered List</h4>
+            <ul>
+              <li>Item 1</li>
+              <li>
+                Item 2<!-- -->
+                <ul>
+                  <li>Subitem 2.1</li>
+                  <li>Subitem 2.2</li>
+                </ul>
+              </li>
+            </ul>
+            <h4>Ordered List</h4>
+            <ol>
+              <li>First step</li>
+              <li>Second step</li>
+              <li>Third step</li>
+            </ol>
+            <h3>Code Blocks</h3>
+            <p>You can write code blocks with syntax highlighting!</p>
+            <pre><code class="language-typescript">interface User {
+  id: number;
+  name: string;
+  role: &#x27;admin&#x27; | &#x27;user&#x27;;
+}
+
+const getUser = (id: number): User =&gt; {
+  return {
+    id,
+    name: &#x27;Jane Doe&#x27;,
+    role: &#x27;admin&#x27;
+  };
+};
+</code></pre>
+            <h3>Links and Images</h3>
+            <p>
+              You can link to <a href="https://google.com">Google</a> or
+              internal pages.
+            </p>
+            <p>
+              <img
+                src="/images/profile.png"
+                alt="Vending Mocha"
+                width="300"
+                height="300"
+                style="width: 300px; height: 300px"
+                node="[object Object]"
+              />
+            </p>
+            <p>Happy writing! ✍️</p>
+          </div>
         </div>
       </div>
       <footer class="container footer-container">
