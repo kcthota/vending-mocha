@@ -5,9 +5,11 @@ import Markdown from 'react-markdown';
 import { parseFrontmatter } from '../utils/frontmatter';
 import postsData from '../posts.json';
 import { formatDate } from '../utils/date';
+import remarkGfm from 'remark-gfm';
+import { MarkdownImage } from '../components/MarkdownImage';
 
 // Load all posts synchronously
-const postFiles = import.meta.glob('../posts/*.md', {
+const postFiles = import.meta.glob('../../posts/*.md', {
     eager: true,
     query: '?raw',
     import: 'default'
@@ -21,7 +23,7 @@ export default function BlogPost() {
         return <div>Post Not Found</div>;
     }
 
-    const filePath = `../posts/${slug}.md`;
+    const filePath = `../../posts/${slug}.md`;
     const rawContent = postFiles[filePath];
 
     if (!rawContent) {
@@ -58,7 +60,14 @@ export default function BlogPost() {
                 </div>
             </header>
             <div className="markdown-content">
-                <Markdown>{content}</Markdown>
+                <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                        img: MarkdownImage
+                    }}
+                >
+                    {content}
+                </Markdown>
             </div>
         </div>
     );

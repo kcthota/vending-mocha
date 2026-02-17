@@ -17,6 +17,15 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+
+  a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-link-hover);
+  }
 }
 
 .container {
@@ -444,13 +453,14 @@ h1 {
 }
 
 .markdown-content code {
-  background: var(--color-accent);
+  background: var(--color-card-bg);
+  color: var(--color-text);
   padding: 0.2em 0.4em;
   border-radius: 4px;
 }
 
 .markdown-content pre {
-  background: var(--color-accent);
+  background: var(--color-card-bg);
   padding: 1.5rem;
   border-radius: 8px;
   overflow-x: auto;

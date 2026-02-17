@@ -6,6 +6,9 @@ import prettier from 'prettier';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p) => path.resolve(__dirname, p);
 
+const basePath = process.env.VITE_BASE_PATH || '/';
+const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
+
 async function prerender() {
     // 1. Read the template (client build output)
     const templatePath = toAbsolute('docs/index.html');
@@ -47,7 +50,8 @@ async function prerender() {
     // 4. Render and save each route
     for (const url of routesToPrerender) {
         try {
-            const { html: renderedHtml, helmet } = render(url);
+            const renderUrl = url === '/' ? normalizedBasePath : `${normalizedBasePath}${url.startsWith('/') ? url.slice(1) : url}`;
+            const { html: renderedHtml, helmet } = render(renderUrl);
 
             let html = template.replace('<!--app-html-->', renderedHtml);
 
@@ -56,7 +60,7 @@ async function prerender() {
                 ${helmet.meta.toString()}
                 ${helmet.link.toString()}
                 ${helmet.script.toString()}
-                <link rel="alternate" type="application/rss+xml" title="RSS Feed for Krishna Thota" href="/rss.xml" />
+                <link rel="alternate" type="application/rss+xml" title="RSS Feed for Krishna Thota" href="${normalizedBasePath}rss.xml" />
             `;
             html = html.replace('<!--app-head-->', helmetHead);
 

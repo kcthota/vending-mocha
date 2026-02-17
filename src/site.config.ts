@@ -1,11 +1,11 @@
 
 
 export const siteConfig = {
-    title: "Krishna Thota",
-    url: "https://kcthota.com",
-    description: `Hi there!👋 I'm **Krishna**. I'm a software engineer based in the Bay Area, California.\n\nI created this space to share the things I'm most passionate about: the evolving world of AI, the precision of a perfect bowl of ramen, and the chaos and beauty of traveling the globe with the people I love.`,
-    image: '/images/profile.jpg',
-    footerText: "My opinions are my own and does not reflect the views of my employer.",
+    title: "Vending Mocha",
+    url: "https://janedoe.com",
+    description: `**Vending Mocha** is a lightweight, strictly typed, and blazing fast personal blogging framework built with React, TypeScript, and Vite.\n\nIt is designed to be minimal, easy to customize, and deployed within minutes. Clone it, update the config, and start writing!`,
+    image: '/images/profile.png',
+    footerText: "My opinions are my own.",
     theme: {
         light: {
             primary: "#222",

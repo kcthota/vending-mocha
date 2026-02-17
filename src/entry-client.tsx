@@ -13,7 +13,7 @@ if (container.children.length > 0) {
         container,
         <StrictMode>
             <HelmetProvider>
-                <BrowserRouter>
+                <BrowserRouter basename={import.meta.env.VITE_BASE_PATH || '/'}>
                     <App />
                 </BrowserRouter>
             </HelmetProvider>
@@ -23,7 +23,7 @@ if (container.children.length > 0) {
     createRoot(container).render(
         <StrictMode>
             <HelmetProvider>
-                <BrowserRouter>
+                <BrowserRouter basename={import.meta.env.VITE_BASE_PATH || '/'}>
                     <App />
                 </BrowserRouter>
             </HelmetProvider>

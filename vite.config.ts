@@ -32,6 +32,8 @@ const watchMarkdownPlugin = () => ({
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH || '/',
+  publicDir: 'static',
   plugins: [react(), watchMarkdownPlugin()],
   build: {
     outDir: 'docs',

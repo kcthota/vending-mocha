@@ -1,7 +1,6 @@
-import React from 'react';
 import { siteConfig } from '../site.config';
 
-const Footer: React.FC = () => {
+export default function Footer() {
     return (
         <footer className="container footer-container">
             <p className="footer-text">
@@ -9,6 +8,4 @@ const Footer: React.FC = () => {
             </p>
         </footer>
     );
-};
-
-export default Footer;
+}

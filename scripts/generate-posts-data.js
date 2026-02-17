@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const postsDir = path.join(__dirname, '../src/posts');
+const postsDir = path.join(__dirname, '../posts');
 const outputFile = path.join(__dirname, '../src/posts.json');
 
 function generatePostsData() {

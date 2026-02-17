@@ -12,7 +12,7 @@ export function render(url: string) {
     const html = renderToString(
         <StrictMode>
             <HelmetProvider context={helmetContext}>
-                <StaticRouter location={url}>
+                <StaticRouter location={url} basename={import.meta.env.VITE_BASE_PATH || '/'}>
                     <App />
                 </StaticRouter>
             </HelmetProvider>
