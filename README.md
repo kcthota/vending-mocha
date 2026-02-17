@@ -1,20 +1,39 @@
-# vending-mocha
+# Vending Mocha
 
-**vending-mocha** is a lightweight, personal blogging framework built with React, TypeScript, and Vite. It's designed to be easily cloned and customized for your own personal website and portfolio.
+**Vending Mocha** is a lightweight, personal blogging framework built with React, TypeScript, and Vite. It's designed to be easily cloned and customized for your own personal website and portfolio.
 
 ## Features
 
-- **Blog**: Markdown-based blog posts using `react-markdown`.
+- **Blog**: Support for markdown based blog posts.
 - **Projects Showcase**: Easily display your projects with status indicators.
 - **Responsive Design**: Clean, modern, and mobile-friendly.
 - **Dark Mode**: Built-in dark mode support.
 - **SEO Friendly**: Basic SEO setup included.
 
+## CLI Usage
+    
+You can use the built-in CLI to easily create a new blog or upgrade an existing one.
+
+### Create a New Blog
+Run the following command to start a new project:
+
+```bash
+npx vending-mocha new my-blog
+```
+
+Follow the interactive prompts to set up your project name, title, and description.
+
+### Upgrade an Existing Blog
+To upgrade your blog to the latest version of `vending-mocha` while preserving your content and configuration:
+
+```bash
+npx vending-mocha upgrade
+```
+
 ## Getting Started
 
-1.  **Clone the repository:**
+1. **Navigate to the project directory:**
     ```bash
-    git clone https://github.com/yourusername/vending-mocha.git my-blog
     cd my-blog
     ```
 
@@ -24,13 +43,13 @@
     ```
 
 3.  **Customize Configuration:**
-    - Edit `src/site.config.ts` to update your personal information (name, bio, links).
-    - Update `src/projects.json` with your own projects.
-    - Add your blog posts to `posts/`.
+    - Edit `src/site.config.ts` to update your site configuration.    
+    - Add your blog posts to `posts/` in markdown format.
+    - Add your projects to `/projects` in markdown format with frontmatter.
 
 4.  **Run the development server:**
     ```bash
-    npm run dev
+    npm run preview
     ```
 
 ## Scripts
@@ -39,8 +58,6 @@
 - `npm run build`: Builds the main application for production.
 - `npm run build:all`: Builds the main application and all sub-projects.
 - `npm run preview`: Locally preview the production build.
-- `npm run serve:docs`: Serve the built documentation folder.
-- `npm run lint`: Runs ESLint.
 
 ## Customization
 
@@ -56,13 +73,13 @@ summary: "A brief summary of the post."
 ```
 
 ### Adding Projects
-Edit `src/projects.json` and add a new object to the array:
+Create a new Markdown file in `/projects`. Ensure it has the required frontmatter:
 
-```json
-{
-  "name": "My Project",
-  "description": "Description of the project.",
-  "link": "https://github.com/...",
-  "status": "active"
-}
+```markdown
+---
+title: "My Project"
+description: "Description of the project."
+link: "https://github.com/..."
+status: "active"
+---
 ```
