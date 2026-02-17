@@ -24,7 +24,7 @@ export default function SiteHeader() {
                         <span>Home</span>
                     </Link>
                     {projects.length > 0 && (
-                        <Link to="/projects" onClick={closeMenu}>
+                        <Link to="/projects/" onClick={closeMenu}>
                             <FolderGit2 size={18} />
                             <span>Projects</span>
                         </Link>

@@ -29,7 +29,7 @@ async function prerender() {
     const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
 
     // 3. Determine routes to prerender
-    const routesToPrerender = ['/', '/projects'];
+    const routesToPrerender = ['/', '/projects/'];
 
     // Add blog post routes and pagination
     const postsPath = toAbsolute('src/posts.json');
@@ -38,14 +38,14 @@ async function prerender() {
 
         // Add post routes
         posts.forEach(post => {
-            routesToPrerender.push(`/post/${post.slug}`);
+            routesToPrerender.push(`/post/${post.slug}/`);
         });
 
         // Add paginated routes
         const POSTS_PER_PAGE = 50;
         const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
         for (let i = 2; i <= totalPages; i++) {
-            routesToPrerender.push(`/page/${i}`);
+            routesToPrerender.push(`/page/${i}/`);
         }
     }
 
@@ -57,14 +57,86 @@ async function prerender() {
 
             let html = template.replace('<!--app-html-->', renderedHtml);
 
+            // Generate theme.js content
+            const themeJsContent = `
+(function() {
+    const themeConfig = ${JSON.stringify(siteConfig.theme)};
+    const STORAGE_KEY = 'theme';
+    const PREFERS_DARK = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function getTheme() {
+        const savedTheme = localStorage.getItem(STORAGE_KEY);
+        if (savedTheme) return savedTheme;
+        return PREFERS_DARK.matches ? 'dark' : 'light';
+    }
+
+    function setTheme(theme) {
+        const root = document.documentElement;
+        const config = themeConfig[theme];
+        
+        for (const [key, value] of Object.entries(config)) {
+            // Check if key maps to CSS vars we use. 
+            // The config keys (primary, secondary, etc) map to --color-[key]
+            // Exception: linkColor -> --color-link, cardBackground -> --color-card-bg
+            
+            let cssVar = \`--color-\${key}\`;
+            if (key === 'linkColor') cssVar = '--color-link';
+            if (key === 'cardBackground') cssVar = '--color-card-bg';
+            
+            root.style.setProperty(cssVar, value);
+        }
+        root.style.setProperty('--font-family', themeConfig.fontFamily);
+        
+        localStorage.setItem(STORAGE_KEY, theme);
+        
+        // Update toggle button icon visibility if needed (could be CSS based)
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    // Initial setup
+    setTheme(getTheme());
+
+    // Listen for system changes
+    PREFERS_DARK.addEventListener('change', (e) => {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+            setTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
+    // Setup toggle button listener when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.querySelector('.theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const current = getTheme();
+                const next = current === 'light' ? 'dark' : 'light';
+                setTheme(next);
+            });
+        }
+    });
+})();
+`;
+            // Write theme.js
+            const themeJsPath = toAbsolute('docs/assets/theme.js');
+            if (!fs.existsSync(path.dirname(themeJsPath))) {
+                fs.mkdirSync(path.dirname(themeJsPath), { recursive: true });
+            }
+            fs.writeFileSync(themeJsPath, themeJsContent);
+
             const helmetHead = `
                 ${helmet.title.toString()}
                 ${helmet.meta.toString()}
                 ${helmet.link.toString()}
                 ${helmet.script.toString()}
                 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Krishna Thota" href="${normalizedBasePath}rss.xml" />
+                <script src="${normalizedBasePath}assets/theme.js"></script>
             `;
+
             html = html.replace('<!--app-head-->', helmetHead);
+
+            // Strip out the client-side React bundle scripts and preloads
+            html = html.replace(/<script type="module" crossorigin src="\/vending-mocha\/assets\/index-[^"]+\.js"><\/script>/g, '');
+            html = html.replace(/<link rel="modulepreload" crossorigin href="\/vending-mocha\/assets\/[^"]+">/g, '');
 
             const formattedHtml = await prettier.format(html, { parser: 'html' });
 
@@ -100,6 +172,18 @@ async function prerender() {
 
     fs.writeFileSync(toAbsolute('docs/sitemap.xml'), sitemap);
     console.log('Generated sitemap.xml');
+
+    // 6. Cleanup unused assets
+    const assetsDir = toAbsolute('docs/assets');
+    if (fs.existsSync(assetsDir)) {
+        const files = fs.readdirSync(assetsDir);
+        for (const file of files) {
+            if (file.endsWith('.js') && file !== 'theme.js') {
+                fs.unlinkSync(path.join(assetsDir, file));
+                console.log(`Deleted unused asset: ${file}`);
+            }
+        }
+    }
 }
 
 prerender();

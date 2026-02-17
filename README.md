@@ -39,6 +39,7 @@
 - `npm run build`: Builds the main application for production.
 - `npm run build:all`: Builds the main application and all sub-projects.
 - `npm run preview`: Locally preview the production build.
+- `npm run serve:docs`: Serve the built documentation folder.
 - `npm run lint`: Runs ESLint.
 
 ## Customization

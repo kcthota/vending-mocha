@@ -10,7 +10,8 @@
     "prebuild": "node scripts/generate-posts-data.js && node scripts/generate-projects-data.js",
     "build": "npm run prebuild && npm run build:client && npm run build:server && node prerender.js && node scripts/generate-rss.js",
     "build:all": "npm run build && for d in projects/*; do if [ -d \"$d\" ]; then (cd \"$d\" && npm run build); fi; done",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve:docs": "vite preview --outDir docs"
   },
   "dependencies": {
     "date-fns": "^4.1.0",

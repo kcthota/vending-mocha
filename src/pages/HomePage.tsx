@@ -60,7 +60,7 @@ export default function HomePage() {
                     {paginatedPosts.map((post) => (
                         <article key={post.slug} className="post-item">
                             <div className="post-header">
-                                <h3><Link to={`/post/${post.slug}`}>{post.title}</Link></h3>
+                                <h3><Link to={`/post/${post.slug}/`}>{post.title}</Link></h3>
                                 <span className="post-date">{formatDate(post.date)}</span>
                             </div>
                             <p className="post-summary">{post.summary}</p>
@@ -70,12 +70,12 @@ export default function HomePage() {
 
                 <nav className="pagination">
                     {hasPrevPage && (
-                        <Link to={currentPage === 2 ? '/' : `/page/${currentPage - 1}`} className="prev-link">
+                        <Link to={currentPage === 2 ? '/' : `/page/${currentPage - 1}/`} className="prev-link">
                             ← Previous
                         </Link>
                     )}
                     {hasNextPage && (
-                        <Link to={`/page/${currentPage + 1}`} className="next-link">
+                        <Link to={`/page/${currentPage + 1}/`} className="next-link">
                             Next →
                         </Link>
                     )}
