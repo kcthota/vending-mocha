@@ -16,10 +16,18 @@ const configContent = fs.readFileSync(configPath, 'utf-8');
 const siteTitle = configContent.match(/title:\s*"(.*?)"/)?.[1] || 'My Blog';
 const siteUrl = configContent.match(/url:\s*"(.*?)"/)?.[1] || 'http://localhost:3000';
 const siteDescription = configContent.match(/description:\s*`(.*?)`/s)?.[1].replace(/\*\*/g, '').replace(/👋/g, '').trim() || '';
-const configBasePath = configContent.match(/basePath:\s*"(.*?)"/)?.[1] || '/';
+// Derive base path from URL
+let derivedBasePath = '/';
+try {
+    if (siteUrl) {
+        const urlObj = new URL(siteUrl);
+        derivedBasePath = urlObj.pathname.endsWith('/') ? urlObj.pathname : `${urlObj.pathname}/`;
+    }
+} catch (e) {
+    console.warn('Invalid siteUrl, defaulting to /');
+}
 
-const basePath = configBasePath;
-const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
+const normalizedBasePath = derivedBasePath;
 
 function generateRSS() {
     if (!fs.existsSync(postsPath)) {

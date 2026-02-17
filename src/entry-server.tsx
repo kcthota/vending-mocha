@@ -8,12 +8,14 @@ export { siteConfig }
 
 const { HelmetProvider } = (ReactHelmetAsync as any).default || ReactHelmetAsync;
 
+import { getBasePath } from './utils/basePath';
+
 export function render(url: string) {
     const helmetContext: any = {};
     const html = renderToString(
         <StrictMode>
             <HelmetProvider context={helmetContext}>
-                <StaticRouter location={url} basename={siteConfig.basePath || '/'}>
+                <StaticRouter location={url} basename={getBasePath()}>
                     <App />
                 </StaticRouter>
             </HelmetProvider>

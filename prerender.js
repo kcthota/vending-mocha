@@ -25,8 +25,16 @@ async function prerender() {
     }
     const { render, siteConfig } = await import(serverEntryPath);
 
-    const basePath = siteConfig.basePath || '/';
-    const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
+    let basePath = '/';
+    try {
+        if (siteConfig.url) {
+            const url = new URL(siteConfig.url);
+            basePath = url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`;
+        }
+    } catch (e) {
+        console.warn('Invalid siteConfig.url, defaulting to /');
+    }
+    const normalizedBasePath = basePath;
 
     // 3. Determine routes to prerender
     const routesToPrerender = ['/', '/projects/'];
@@ -49,16 +57,10 @@ async function prerender() {
         }
     }
 
-    // 4. Render and save each route
-    for (const url of routesToPrerender) {
-        try {
-            const renderUrl = url === '/' ? normalizedBasePath : `${normalizedBasePath}${url.startsWith('/') ? url.slice(1) : url}`;
-            const { html: renderedHtml, helmet } = render(renderUrl);
-
-            let html = template.replace('<!--app-html-->', renderedHtml);
-
-            // Generate theme.js content
-            const themeJsContent = `
+    // Generate theme.js content once
+    const themeHash = Math.random().toString(36).substring(2, 10);
+    const themeFilename = `theme.${themeHash}.js`;
+    const themeJsContent = `
 (function() {
     const themeConfig = ${JSON.stringify(siteConfig.theme)};
     const STORAGE_KEY = 'theme';
@@ -116,12 +118,23 @@ async function prerender() {
     });
 })();
 `;
-            // Write theme.js
-            const themeJsPath = toAbsolute('docs/assets/theme.js');
-            if (!fs.existsSync(path.dirname(themeJsPath))) {
-                fs.mkdirSync(path.dirname(themeJsPath), { recursive: true });
-            }
-            fs.writeFileSync(themeJsPath, themeJsContent);
+    // Write theme.js
+    const themeJsPath = toAbsolute(`docs/assets/${themeFilename}`);
+    if (!fs.existsSync(path.dirname(themeJsPath))) {
+        fs.mkdirSync(path.dirname(themeJsPath), { recursive: true });
+    }
+    fs.writeFileSync(themeJsPath, themeJsContent);
+    console.log(`Generated ${themeFilename}`);
+
+    // 4. Render and save each route
+    for (const url of routesToPrerender) {
+        try {
+            const renderUrl = url === '/' ? normalizedBasePath : `${normalizedBasePath}${url.startsWith('/') ? url.slice(1) : url}`;
+            const { html: renderedHtml, helmet } = render(renderUrl);
+
+            let html = template.replace('<!--app-html-->', renderedHtml);
+
+
 
             const helmetHead = `
                 ${helmet.title.toString()}
@@ -129,7 +142,7 @@ async function prerender() {
                 ${helmet.link.toString()}
                 ${helmet.script.toString()}
                 <link rel="alternate" type="application/rss+xml" title="RSS Feed for Krishna Thota" href="${normalizedBasePath}rss.xml" />
-                <script src="${normalizedBasePath}assets/theme.js"></script>
+                <script src="${normalizedBasePath}assets/${themeFilename}"></script>
             `;
 
             html = html.replace('<!--app-head-->', helmetHead);
@@ -178,7 +191,7 @@ async function prerender() {
     if (fs.existsSync(assetsDir)) {
         const files = fs.readdirSync(assetsDir);
         for (const file of files) {
-            if (file.endsWith('.js') && file !== 'theme.js') {
+            if (file.endsWith('.js') && file !== themeFilename) {
                 fs.unlinkSync(path.join(assetsDir, file));
                 console.log(`Deleted unused asset: ${file}`);
             }

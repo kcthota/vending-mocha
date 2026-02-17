@@ -34,8 +34,18 @@ const watchMarkdownPlugin = () => ({
 
 const siteConfigPath = path.resolve(__dirname, 'src/site.config.ts');
 const siteConfigContent = fs.readFileSync(siteConfigPath, 'utf-8');
-const basePathMatch = siteConfigContent.match(/basePath:\s*["']([^"']+)["']/);
-const basePath = basePathMatch ? basePathMatch[1] : '/';
+
+// Derive base path from siteConfig.url
+const urlMatch = siteConfigContent.match(/url:\s*["']([^"']+)["']/);
+let basePath = '/';
+if (urlMatch) {
+  try {
+    const url = new URL(urlMatch[1]);
+    basePath = url.pathname.endsWith('/') ? url.pathname : `${url.pathname}/`;
+  } catch (e) {
+    console.warn('Invalid URL in site.config.ts, defaulting to /');
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
