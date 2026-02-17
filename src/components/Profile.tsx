@@ -11,7 +11,11 @@ export default function Profile() {
             </div>
             {siteConfig.image && (
                 <div className="profile-image-container">
-                    <img src={siteConfig.image} alt="Profile" className="profile-image" />
+                    <img
+                        src={siteConfig.image.startsWith('http') ? siteConfig.image : `${siteConfig.basePath || '/'}${siteConfig.image.startsWith('/') ? siteConfig.image.slice(1) : siteConfig.image}`}
+                        alt="Profile"
+                        className="profile-image"
+                    />
                 </div>
             )}
         </section>

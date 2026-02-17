@@ -29,8 +29,6 @@ jobs:
 
       - name: Build all projects
         run: npm run build:all
-        env:
-          VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

@@ -3,7 +3,8 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import * as ReactHelmetAsync from 'react-helmet-async'
 import App from './App'
-export { siteConfig } from './site.config'
+import { siteConfig } from './site.config'
+export { siteConfig }
 
 const { HelmetProvider } = (ReactHelmetAsync as any).default || ReactHelmetAsync;
 
@@ -12,7 +13,7 @@ export function render(url: string) {
     const html = renderToString(
         <StrictMode>
             <HelmetProvider context={helmetContext}>
-                <StaticRouter location={url} basename={import.meta.env.VITE_BASE_PATH || '/'}>
+                <StaticRouter location={url} basename={siteConfig.basePath || '/'}>
                     <App />
                 </StaticRouter>
             </HelmetProvider>

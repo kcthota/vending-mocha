@@ -6,8 +6,7 @@ import prettier from 'prettier';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p) => path.resolve(__dirname, p);
 
-const basePath = process.env.VITE_BASE_PATH || '/';
-const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
+
 
 async function prerender() {
     // 1. Read the template (client build output)
@@ -24,7 +23,10 @@ async function prerender() {
         console.error('dist/server/entry-server.js not found. Run server build first.');
         process.exit(1);
     }
-    const { render } = await import(serverEntryPath);
+    const { render, siteConfig } = await import(serverEntryPath);
+
+    const basePath = siteConfig.basePath || '/';
+    const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
 
     // 3. Determine routes to prerender
     const routesToPrerender = ['/', '/projects'];
@@ -85,12 +87,12 @@ async function prerender() {
     }
 
     // 5. Generate Sitemap
-    const { siteConfig } = await import(serverEntryPath);
+    // siteConfig is already imported above
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${routesToPrerender.map(url => `
   <url>
-    <loc>${siteConfig.url}${url === '/' ? '' : url}</loc>
+    <loc>${siteConfig.url.replace(/\/$/, '')}${url}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
   </url>
   `).join('')}

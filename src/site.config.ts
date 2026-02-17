@@ -2,7 +2,8 @@
 
 export const siteConfig = {
     title: "Vending Mocha",
-    url: "https://janedoe.com",
+    url: "https://kcthota.github.io/vending-mocha",
+    basePath: "/vending-mocha/", //relative path for the site from root
     description: `**Vending Mocha** is a lightweight, strictly typed, and blazing fast personal blogging framework built with React, TypeScript, and Vite.\n\nIt is designed to be minimal, easy to customize, and deployed within minutes. Clone it, update the config, and start writing!`,
     image: '/images/profile.png',
     footerText: "My opinions are my own.",

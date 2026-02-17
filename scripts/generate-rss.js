@@ -16,6 +16,10 @@ const configContent = fs.readFileSync(configPath, 'utf-8');
 const siteTitle = configContent.match(/title:\s*"(.*?)"/)?.[1] || 'My Blog';
 const siteUrl = configContent.match(/url:\s*"(.*?)"/)?.[1] || 'http://localhost:3000';
 const siteDescription = configContent.match(/description:\s*`(.*?)`/s)?.[1].replace(/\*\*/g, '').replace(/👋/g, '').trim() || '';
+const configBasePath = configContent.match(/basePath:\s*"(.*?)"/)?.[1] || '/';
+
+const basePath = configBasePath;
+const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
 
 function generateRSS() {
     if (!fs.existsSync(postsPath)) {
@@ -30,7 +34,7 @@ function generateRSS() {
     const posts = JSON.parse(fs.readFileSync(postsPath, 'utf-8')).slice(0, 25);
 
     const items = posts.map(post => {
-        const url = `${siteUrl}/post/${post.slug}`;
+        const url = `${siteUrl.replace(/\/$/, '')}/post/${post.slug}`;
         const pubDate = new Date(post.date).toUTCString();
 
         return `
@@ -51,7 +55,7 @@ function generateRSS() {
   <description>${siteDescription}</description>
   <language>en-us</language>
   <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-  <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
+  <atom:link href="${siteUrl.replace(/\/$/, '')}/rss.xml" rel="self" type="application/rss+xml" />
   ${items}
 </channel>
 </rss>`;

@@ -1,6 +1,8 @@
 import { defineConfig, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import { exec } from 'child_process'
+import fs from 'fs'
+import path from 'path'
 
 // Custom plugin to watch markdown files and regenerate data
 const watchMarkdownPlugin = () => ({
@@ -30,9 +32,14 @@ const watchMarkdownPlugin = () => ({
   }
 })
 
+const siteConfigPath = path.resolve(__dirname, 'src/site.config.ts');
+const siteConfigContent = fs.readFileSync(siteConfigPath, 'utf-8');
+const basePathMatch = siteConfigContent.match(/basePath:\s*["']([^"']+)["']/);
+const basePath = basePathMatch ? basePathMatch[1] : '/';
+
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.VITE_BASE_PATH || '/',
+  base: basePath,
   publicDir: 'static',
   plugins: [react(), watchMarkdownPlugin()],
   build: {
