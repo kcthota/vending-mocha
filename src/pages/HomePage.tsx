@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { Rss } from 'lucide-react';
 import SiteHeader from '../components/SiteHeader';
 import * as ReactHelmetAsync from 'react-helmet-async';
 import { siteConfig } from '../site.config';
@@ -49,7 +50,12 @@ export default function HomePage() {
             <Profile />
 
             <section className="posts-section">
-                <h2>{currentPage > 1 ? `Posts - Page ${currentPage}` : 'Recent Posts'}</h2>
+                <h2>
+                    {currentPage > 1 ? `Posts - Page ${currentPage}` : 'Recent Posts'}
+                    <a style={{ marginLeft: '5px' }} href="/rss.xml" target="_blank" rel="noopener noreferrer" className="rss-link" title="RSS Feed">
+                        <Rss size={18} className="inline-block align-middle text-gray-500 hover:text-black transition-colors" />
+                    </a>
+                </h2>
                 <div className="posts-list">
                     {paginatedPosts.map((post) => (
                         <article key={post.slug} className="post-item">

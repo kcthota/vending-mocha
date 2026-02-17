@@ -4,11 +4,11 @@ date: "2024-01-03"
 summary: "A quick guide on how to update the configuration, styling, and content of your new blog."
 ---
 
-# Customization Guide
+## Customization Guide
 
 So you've cloned **Vending Mocha**. What's next? Here is a quick guide to making it your own.
 
-## 1. Update Configuration
+### 1. Update Configuration
 
 Open `src/site.config.ts` and update the following:
 
@@ -24,21 +24,22 @@ export const siteConfig = {
 }
 ```
 
-## 2. Add Your Projects
+### 2. Add Your Projects
 
-Head over to `src/projects.json` and add your own projects. The schema is simple:
+Add new `.md` files with frontmatter to `/projects/` to add your projects.
 
-```json
-{
-    "name": "My Project",
-    "description": "What is it?",
-    "link": "https://github.com/...",
-    "status": "active" // active, dead, inactive
-}
+```
+---
+title: "My Project"
+description: "What is it?"
+link: "https://github.com/..."
+status: "active" // active, dead, inactive
+weight: 5 // higher weight projects are displayed first
+---
 ```
 
-## 3. Write Posts
+### 3. Write Posts
 
-Just add new `.md` files to `src/posts/`. The filename becomes the slug (e.g., `src/posts/my-post.md` -> `/post/my-post`).
+Just add new `.md` files to `/posts/`. The filename becomes the slug (e.g., `/posts/my-post.md` -> `/post/my-post`).
 
 That's it! You're ready to deploy. 🚀
