@@ -14,7 +14,7 @@
       href="/rss.xml"
     />
 
-    <script type="module" crossorigin src="/assets/index-Bz6onv8M.js"></script>
+    <script type="module" crossorigin src="/assets/index-Cta5cYq1.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Ba3tuH9I.css" />
   </head>
 
@@ -134,12 +134,12 @@
             <div class="meta"><span>January 03, 2024</span></div>
           </header>
           <div class="markdown-content">
-            <h1>Customization Guide</h1>
+            <h2>Customization Guide</h2>
             <p>
               So you&#x27;ve cloned <strong>Vending Mocha</strong>. What&#x27;s
               next? Here is a quick guide to making it your own.
             </p>
-            <h2>1. Update Configuration</h2>
+            <h3>1. Update Configuration</h3>
             <p>
               Open <code>src/site.config.ts</code> and update the following:
             </p>
@@ -159,24 +159,24 @@
     // ...
 }
 </code></pre>
-            <h2>2. Add Your Projects</h2>
+            <h3>2. Add Your Projects</h3>
             <p>
-              Head over to <code>src/projects.json</code> and add your own
-              projects. The schema is simple:
+              Add new <code>.md</code> files with frontmatter to
+              <code>/projects/</code> to add your projects.
             </p>
-            <pre><code class="language-json">{
-    &quot;name&quot;: &quot;My Project&quot;,
-    &quot;description&quot;: &quot;What is it?&quot;,
-    &quot;link&quot;: &quot;https://github.com/...&quot;,
-    &quot;status&quot;: &quot;active&quot; // active, dead, inactive
-}
+            <pre><code>---
+title: &quot;My Project&quot;
+description: &quot;What is it?&quot;
+link: &quot;https://github.com/...&quot;
+status: &quot;active&quot; // active, dead, inactive
+weight: 5 // higher weight projects are displayed first
+---
 </code></pre>
-            <h2>3. Write Posts</h2>
+            <h3>3. Write Posts</h3>
             <p>
-              Just add new <code>.md</code> files to <code>src/posts/</code>.
-              The filename becomes the slug (e.g.,
-              <code>src/posts/my-post.md</code> -&gt;
-              <code>/post/my-post</code>).
+              Just add new <code>.md</code> files to <code>/posts/</code>. The
+              filename becomes the slug (e.g.,
+              <code>/posts/my-post.md</code> -&gt; <code>/post/my-post</code>).
             </p>
             <p>That&#x27;s it! You&#x27;re ready to deploy. 🚀</p>
           </div>
