@@ -47,7 +47,7 @@ npx vending-mocha upgrade
     - Add your blog posts to `posts/` in markdown format.
     - Add your projects to `/projects` in markdown format with frontmatter.
 
-4.  **Run the development server:**
+4.  **Serve the site locally:**
     ```bash
     npm run preview
     ```

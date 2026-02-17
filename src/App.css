@@ -472,7 +472,7 @@ h1 {
   color: var(--color-text);
 }
 
-.markdown-content code {
+code {
   background: var(--color-card-bg);
   color: var(--color-text);
   padding: 0.2em 0.4em;
