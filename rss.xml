@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>Vending Mocha</title>
-  <link>https://kcthota.github.io/vending-mocha</link>
+  <link>https://vendingmocha.com</link>
   <description>Vending Mocha is a lightweight, strictly typed, and blazing fast personal blogging framework built with React, TypeScript, and Vite.\n\nIt is designed to be minimal, easy to customize, and deployed within minutes. Clone it, update the config, and start writing!Vending Mocha is a lightweight, strictly typed, and blazing fast personal blogging framework built with React, TypeScript, and Vite.\n\nIt is designed to be minimal, easy to customize, and deployed within minutes. Clone it, update the config, and start writing!</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 17 Feb 2026 07:32:50 GMT</lastBuildDate>
-  <atom:link href="https://kcthota.github.io/vending-mocha/rss.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Tue, 17 Feb 2026 08:24:39 GMT</lastBuildDate>
+  <atom:link href="https://vendingmocha.com/rss.xml" rel="self" type="application/rss+xml" />
   
     <item>
       <title><![CDATA[How to Customize Vending Mocha 🎨]]></title>
-      <link>https://kcthota.github.io/vending-mocha/post/customization-guide</link>
-      <guid isPermaLink="true">https://kcthota.github.io/vending-mocha/post/customization-guide</guid>
+      <link>https://vendingmocha.com/post/customization-guide</link>
+      <guid isPermaLink="true">https://vendingmocha.com/post/customization-guide</guid>
       <pubDate>Wed, 03 Jan 2024 00:00:00 GMT</pubDate>
       <description><![CDATA[A quick guide on how to update the configuration, styling, and content of your new blog.]]></description>
     </item>
     <item>
       <title><![CDATA[Markdown Features Demo 📝]]></title>
-      <link>https://kcthota.github.io/vending-mocha/post/markdown-features</link>
-      <guid isPermaLink="true">https://kcthota.github.io/vending-mocha/post/markdown-features</guid>
+      <link>https://vendingmocha.com/post/markdown-features</link>
+      <guid isPermaLink="true">https://vendingmocha.com/post/markdown-features</guid>
       <pubDate>Tue, 02 Jan 2024 00:00:00 GMT</pubDate>
       <description><![CDATA[A demonstration of the Markdown features supported by Vending Mocha, including code blocks, lists, and formatting.]]></description>
     </item>
     <item>
       <title><![CDATA[Welcome to vending-mocha ☕]]></title>
-      <link>https://kcthota.github.io/vending-mocha/post/hello-world</link>
-      <guid isPermaLink="true">https://kcthota.github.io/vending-mocha/post/hello-world</guid>
+      <link>https://vendingmocha.com/post/hello-world</link>
+      <guid isPermaLink="true">https://vendingmocha.com/post/hello-world</guid>
       <pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate>
       <description><![CDATA[Welcome to your new blogging framework! This is a sample post to get you started.]]></description>
     </item>
