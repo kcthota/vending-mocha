@@ -30,18 +30,8 @@ jobs:
       - name: Build all projects
         run: npm run build:all
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # Force add docs because it is ignored
-          git add -f docs/
-
-          # Check if there are any staged changes
-          if ! git diff --staged --quiet; then
-            git commit -m "chore: update docs artifacts [skip ci]"
-            git push origin main
-          else
-            echo "No changes in docs/ directory"
-          fi
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
