@@ -3,7 +3,7 @@ import { getBasePath } from '../utils/basePath';
 import remarkBreaks from 'remark-breaks';
 import { siteConfig } from '../site.config';
 import remarkGfm from 'remark-gfm';
-import { ExternalLink, Mail, Rss } from 'lucide-react';
+import { Github, Mail, Rss } from 'lucide-react';
 
 export default function Profile() {
     return (
@@ -27,9 +27,9 @@ export default function Profile() {
                             <Mail size={20} />
                         </a>
                     )}
-                    {siteConfig.contact?.externalLink && (
-                        <a href={siteConfig.contact.externalLink} target="_blank" rel="noopener noreferrer" aria-label="External Link">
-                            <ExternalLink size={20} />
+                    {siteConfig.contact?.github && (
+                        <a href={siteConfig.contact.github} target="_blank" rel="noopener noreferrer" aria-label="Github">
+                            <Github size={20} />
                         </a>
                     )}
 
