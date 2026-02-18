@@ -1,6 +1,6 @@
 ---
 title: "Deploying to GitHub Pages 🚀"
-date: "2026-02-17 04:00:00"
+date: "2026-02-17 01:00:00"
 summary: "A step-by-step guide to deploying your Vending Mocha blog to GitHub Pages using GitHub Actions."
 ---
 
