@@ -65,18 +65,20 @@ export default function HomePage() {
                     ))}
                 </div>
 
-                <nav className="pagination">
-                    {hasPrevPage && (
-                        <Link to={currentPage === 2 ? '/' : `/page/${currentPage - 1}/`} className="prev-link">
-                            ← Previous
-                        </Link>
-                    )}
-                    {hasNextPage && (
-                        <Link to={`/page/${currentPage + 1}/`} className="next-link">
-                            Next →
-                        </Link>
-                    )}
-                </nav>
+                {totalPages > 1 && (
+                    <nav className="pagination">
+                        {hasPrevPage && (
+                            <Link to={currentPage === 2 ? '/' : `/page/${currentPage - 1}/`} className="prev-link">
+                                ← Previous
+                            </Link>
+                        )}
+                        {hasNextPage && (
+                            <Link to={`/page/${currentPage + 1}/`} className="next-link">
+                                Next →
+                            </Link>
+                        )}
+                    </nav>
+                )}
             </section>
         </div>
     );
