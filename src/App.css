@@ -210,6 +210,13 @@ h1 {
   /* margin-bottom: 4rem; */
 }
 
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
 .profile-image-container {
   width: 200px;
   height: 200px;
@@ -307,6 +314,7 @@ h1 {
 
 .post-summary {
   margin: 0;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
@@ -352,7 +360,7 @@ h1 {
     text-align: left;
   }
 
-  .profile-image-container {
+  .profile-sidebar {
     order: -1;
     margin-bottom: 1.5rem;
   }

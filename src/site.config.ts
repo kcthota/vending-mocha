@@ -7,8 +7,8 @@ export const siteConfig = {
     image: '/images/profile.png',
     social: {
         github: "https://github.com/kcthota/vending-mocha",
-        linkedin: undefined,
-        email: undefined,
+        linkedin: "https://github.com/kcthota/vending-mocha",
+        email: "foo@example.com",
     },
     footerText: "My opinions are my own.",
     theme: {

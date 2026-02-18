@@ -12,12 +12,14 @@ export default function Profile() {
                 <Markdown remarkPlugins={[remarkBreaks, remarkGfm]}>{siteConfig.description}</Markdown>
             </div>
             {siteConfig.image && (
-                <div className="profile-image-container">
-                    <img
-                        src={siteConfig.image.startsWith('http') ? siteConfig.image : `${getBasePath()}${siteConfig.image.startsWith('/') ? siteConfig.image.slice(1) : siteConfig.image}`}
-                        alt="Profile"
-                        className="profile-image"
-                    />
+                <div className="profile-sidebar">
+                    <div className="profile-image-container">
+                        <img
+                            src={siteConfig.image.startsWith('http') ? siteConfig.image : `${getBasePath()}${siteConfig.image.startsWith('/') ? siteConfig.image.slice(1) : siteConfig.image}`}
+                            alt="Profile"
+                            className="profile-image"
+                        />
+                    </div>
                     <div className="social-links">
                         {siteConfig.social?.github && (
                             <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">

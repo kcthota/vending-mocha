@@ -54,5 +54,8 @@ export default defineConfig({
   plugins: [react(), watchMarkdownPlugin()],
   build: {
     outDir: 'docs',
+  },
+  ssr: {
+    noExternal: ['react-syntax-highlighter']
   }
 })
