@@ -76,6 +76,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
+          cname: your-domain.com # Optional - if you are using a custom domain
 ```
 
 This workflow does the following:
