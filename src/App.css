@@ -128,10 +128,13 @@ h1 {
   align-items: center;
   flex-direction: row;
   padding: 0 0 10px 0;
-  border-bottom: 1px solid var(--color-border);
   margin-bottom: 3rem;
   position: relative;
   z-index: 1000;
+
+  &.with-bottom-border {
+    border-bottom: 2px solid var(--color-border);
+  }
 }
 
 .header-actions {
@@ -165,7 +168,9 @@ h1 {
 .nav-container {
   display: flex;
   align-items: center;
+  padding: 4px 0;
   gap: 2rem;
+  justify-content: right;
 }
 
 .site-title {
@@ -204,7 +209,7 @@ h1 {
 /* Profile Section */
 .profile-section {
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 220px 1fr;
   gap: 2rem;
   align-items: start;
   /* margin-bottom: 4rem; */
@@ -234,7 +239,7 @@ h1 {
 
 .social-links {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   gap: 1rem;
   margin-top: 1rem;
 }

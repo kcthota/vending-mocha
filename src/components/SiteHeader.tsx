@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Home, FolderGit2, Sun, Moon, Menu, X } from 'lucide-react';
-import { siteConfig } from '../site.config';
 import { useTheme } from '../context/ThemeContext';
-
+import { siteConfig } from '../site.config';
 import projects from '../projects.json';
 
-export default function SiteHeader() {
+export default function SiteHeader({ showTitle = true }: { showTitle?: boolean }) {
     const { theme, toggleTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -14,9 +13,8 @@ export default function SiteHeader() {
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
-        <header className="main-header">
-            <h1 className="site-title"><Link to="/" onClick={closeMenu}>{siteConfig.title}</Link></h1>
-
+        <header className={showTitle ? 'main-header with-bottom-border' : 'main-header'}>
+            <div className="header-title">{showTitle && <h1 className="site-title"><Link to="/">{siteConfig.title}</Link></h1>}</div>
             <div className="nav-container">
                 <nav className={`top-nav ${isMenuOpen ? 'active' : ''}`}>
                     <Link to="/" onClick={closeMenu}>

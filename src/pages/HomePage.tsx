@@ -47,15 +47,12 @@ export default function HomePage() {
                 <meta property="og:type" content="website" />
                 {siteConfig.image && <meta property="og:image" content={siteConfig.image.startsWith('http') ? siteConfig.image : `${getBasePath()}${siteConfig.image.startsWith('/') ? siteConfig.image.slice(1) : siteConfig.image}`} />}
             </Helmet>
-            <SiteHeader />
+            <SiteHeader showTitle={false} />
             <Profile />
 
             <section className="posts-section">
                 <h2>
                     {currentPage > 1 ? `Posts - Page ${currentPage}` : 'Recent Posts'}
-                    <a style={{ marginLeft: '5px' }} href={`${getBasePath()}rss.xml`} target="_blank" rel="noopener noreferrer" className="rss-link" title="RSS Feed">
-                        <Rss size={18} className="inline-block align-middle text-gray-500 hover:text-black transition-colors" />
-                    </a>
                 </h2>
                 <div className="posts-list">
                     {paginatedPosts.map((post) => (

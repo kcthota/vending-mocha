@@ -3,14 +3,11 @@ import { getBasePath } from '../utils/basePath';
 import remarkBreaks from 'remark-breaks';
 import { siteConfig } from '../site.config';
 import remarkGfm from 'remark-gfm';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { ExternalLink, Mail, Rss } from 'lucide-react';
 
 export default function Profile() {
     return (
         <section className="profile-section">
-            <div className="profile-info">
-                <Markdown remarkPlugins={[remarkBreaks, remarkGfm]}>{siteConfig.description}</Markdown>
-            </div>
             {siteConfig.image && (
                 <div className="profile-sidebar">
                     <div className="profile-image-container">
@@ -20,25 +17,29 @@ export default function Profile() {
                             className="profile-image"
                         />
                     </div>
-                    <div className="social-links">
-                        {siteConfig.social?.github && (
-                            <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                                <Github size={20} />
-                            </a>
-                        )}
-                        {siteConfig.social?.linkedin && (
-                            <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                <Linkedin size={20} />
-                            </a>
-                        )}
-                        {siteConfig.social?.email && (
-                            <a href={`mailto:${siteConfig.social.email}`} aria-label="Email">
-                                <Mail size={20} />
-                            </a>
-                        )}
-                    </div>
                 </div>
             )}
+            <div className="profile-info">
+                <h1 className="site-title">{siteConfig.title}</h1>
+                <div className="social-links">
+                    {siteConfig.contact?.email && (
+                        <a href={`mailto:${siteConfig.contact.email}`} aria-label="Email">
+                            <Mail size={20} />
+                        </a>
+                    )}
+                    {siteConfig.contact?.externalLink && (
+                        <a href={siteConfig.contact.externalLink} target="_blank" rel="noopener noreferrer" aria-label="External Link">
+                            <ExternalLink size={20} />
+                        </a>
+                    )}
+
+                    <a href={`${getBasePath()}rss.xml`} target="_blank" rel="noopener noreferrer" aria-label="RSS Feed">
+                        <Rss size={18} className="inline-block align-middle text-gray-500 hover:text-black transition-colors" />
+                    </a>
+                </div>
+                <Markdown remarkPlugins={[remarkBreaks, remarkGfm]}>{siteConfig.description}</Markdown>
+
+            </div>
         </section>
     );
 }
