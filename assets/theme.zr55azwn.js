@@ -53,5 +53,20 @@
                 setTheme(next);
             });
         }
+
+        const hamburgerBtn = document.querySelector('.hamburger-menu');
+        const topNav = document.querySelector('.top-nav');
+        if (hamburgerBtn && topNav) {
+            hamburgerBtn.addEventListener('click', () => {
+                topNav.classList.toggle('active');
+            });
+            
+            // Close menu when clicking links
+             topNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                   topNav.classList.remove('active'); 
+                });
+            });
+        }
     });
 })();
