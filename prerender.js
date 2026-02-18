@@ -115,6 +115,21 @@ async function prerender() {
                 setTheme(next);
             });
         }
+
+        const hamburgerBtn = document.querySelector('.hamburger-menu');
+        const topNav = document.querySelector('.top-nav');
+        if (hamburgerBtn && topNav) {
+            hamburgerBtn.addEventListener('click', () => {
+                topNav.classList.toggle('active');
+            });
+            
+            // Close menu when clicking links
+             topNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                   topNav.classList.remove('active'); 
+                });
+            });
+        }
     });
 })();
 `;
@@ -148,8 +163,12 @@ async function prerender() {
             html = html.replace('<!--app-head-->', helmetHead);
 
             // Strip out the client-side React bundle scripts and preloads
-            html = html.replace(/<script type="module" crossorigin src="\/vending-mocha\/assets\/index-[^"]+\.js"><\/script>/g, '');
-            html = html.replace(/<link rel="modulepreload" crossorigin href="\/vending-mocha\/assets\/[^"]+">/g, '');
+            const escapedBase = normalizedBasePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const scriptRegex = new RegExp(`<script type="module" crossorigin src="${escapedBase}assets\\/index-[^"]+\\.js"><\\/script>`, 'g');
+            const preloadRegex = new RegExp(`<link rel="modulepreload" crossorigin href="${escapedBase}assets\\/[^"]+">`, 'g');
+
+            html = html.replace(scriptRegex, '');
+            html = html.replace(preloadRegex, '');
 
             const formattedHtml = await prettier.format(html, { parser: 'html' });
 
