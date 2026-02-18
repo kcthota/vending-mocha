@@ -1,4 +1,3 @@
-import Profile from '../components/Profile';
 import SiteHeader from '../components/SiteHeader';
 
 import projectsData from '../projects.json';

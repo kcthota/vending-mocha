@@ -7,7 +7,7 @@ export const siteConfig = {
     image: '/images/profile.png',
     contact: {
         externalLink: "https://github.com/kcthota/vending-mocha",
-        email: "foo@example.com"
+        email: undefined
     },
     footerText: "My opinions are my own.",
     theme: {

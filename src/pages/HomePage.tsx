@@ -1,5 +1,4 @@
 import { Link, useParams } from 'react-router-dom';
-import { Rss } from 'lucide-react';
 import { getBasePath } from '../utils/basePath';
 import SiteHeader from '../components/SiteHeader';
 import * as ReactHelmetAsync from 'react-helmet-async';
