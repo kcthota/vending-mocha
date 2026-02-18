@@ -25,22 +25,97 @@ const IGNORE_FILES = [
 
 function getAsciiArt() {
     const cup = `
-      ( (
-       ) )
-    .______.
-    |      |]
-    \\      /
-     \`----'
+  ( (
+   ) )
+.______.
+|      |]
+\\      /
+ \`----'
     `;
 
-    const art = [
-        chalk.yellow(cup),
-        chalk.cyan(figlet.textSync('Vending', { horizontalLayout: 'full' })),
-        chalk.cyan(figlet.textSync('Mocha', { horizontalLayout: 'full' })),
-        '\n'
-    ].join('\n');
+    // 1. Generate Plain Text
+    const vending = figlet.textSync('Vending', { horizontalLayout: 'full' });
+    const mocha = figlet.textSync('Mocha', { horizontalLayout: 'full' });
 
-    return art;
+    // 2. Prepare Lines
+    const vendingLines = vending.split('\n');
+    const mochaLines = mocha.split('\n');
+    const cupLines = cup.split('\n').filter(line => line.trim().length > 0);
+
+    // 3. Calculate Layout Dimensions
+    const mochaWidth = Math.max(...mochaLines.map(line => line.length));
+
+    // Combine Mocha + Cup logic to find total max width
+    // We need to see how wide the bottom section (Mocha + Cup) is vs the top section (Vending)
+
+    // Bottom Section Width
+    let maxBottomWidth = 0;
+    const bottomHeight = Math.max(mochaLines.length, cupLines.length);
+    for (let i = 0; i < bottomHeight; i++) {
+        const mLen = (mochaLines[i] || '').length;
+        const cLen = (cupLines[i] || '').length;
+        // Mocha + 3 spaces + Cup
+        const lineLen = Math.max(mLen, mochaWidth) + 3 + cLen;
+        if (lineLen > maxBottomWidth) maxBottomWidth = lineLen;
+    }
+
+    // Top Section Width
+    const maxTopWidth = Math.max(...vendingLines.map(line => line.length));
+
+    // Overall Max Width
+    const contentWidth = Math.max(maxTopWidth, maxBottomWidth);
+
+    // 4. Construct Art with Border
+    const lines = [];
+
+    // Top Border
+    // Width = contentWidth + 2 spaces padding on each side = contentWidth + 4 ?
+    // Let's stick to the design: │  Content  │ (2 spaces padding)
+    // So inner width = contentWidth + 4.
+    // Border line length = contentWidth + 4.
+
+    const borderLine = '─'.repeat(contentWidth + 4);
+    lines.push(chalk.cyan('╭' + borderLine + '╮'));
+
+    // Helper to push a bordered line
+    const pushLine = (str, strLength) => {
+        const padding = ' '.repeat(contentWidth - strLength);
+        // We manually construct the line: │  <str> <padding>  │
+        // But <str> might contain ANSI codes, so we need to be careful not to count them in length, 
+        // which is why we pass strLength explicitly.
+        lines.push(chalk.cyan('│  ') + str + padding + chalk.cyan('  │'));
+    };
+
+    // Render Vending (Top)
+    for (const line of vendingLines) {
+        pushLine(chalk.cyan(line), line.length);
+    }
+
+    // Gap? The user art in previous turn didn't have a gap, but it looks better with one maybe? 
+    // The previous output didn't have a huge gap. Let's not add extra vertical gap to keep it compact unless needed.
+    // Actually, let's add one empty line for separation if it looks cramped. 
+    // Figlet art usually has some whitespace. Let's mimic the test_border.js which didn't verify vertical spacing explicitly but looked okay.
+    // I'll skip explicit vertical gap to match previous compactness, unless I see reason to add it.
+
+    // Render Mocha + Cup (Bottom)
+    for (let i = 0; i < bottomHeight; i++) {
+        const mLine = mochaLines[i] || '';
+        const cLine = cupLines[i] || '';
+
+        // Pad mocha part to mochaWidth
+        const mPad = ' '.repeat(mochaWidth - mLine.length);
+
+        const combinedStr = chalk.cyan(mLine) + mPad + '   ' + chalk.yellow(cLine);
+        const combinedLen = mochaWidth + 3 + cLine.length;
+
+        pushLine(combinedStr, combinedLen);
+    }
+
+    // Bottom Border
+    lines.push(chalk.cyan('╰' + borderLine + '╯'));
+    lines.push(''); // Final newline
+
+    return lines.join('\n');
 }
 
 function copyRecursiveSync(src, dest, destRoot) {
