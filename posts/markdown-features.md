@@ -1,6 +1,6 @@
 ---
 title: "Markdown Features Demo 📝"
-date: "2024-01-02"
+date: "2026-02-17 02:00:00"
 summary: "A demonstration of the Markdown features supported by Vending Mocha, including code blocks, lists, and formatting."
 ---
 

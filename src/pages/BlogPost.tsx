@@ -7,6 +7,8 @@ import postsData from '../posts.json';
 import { formatDate } from '../utils/date';
 import remarkGfm from 'remark-gfm';
 import { MarkdownImage } from '../components/MarkdownImage';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // Load all posts synchronously
 const postFiles = import.meta.glob('../../posts/*.md', {
@@ -63,7 +65,24 @@ export default function BlogPost() {
                 <Markdown
                     remarkPlugins={[remarkGfm]}
                     components={{
-                        img: MarkdownImage
+                        img: MarkdownImage,
+                        code(props) {
+                            const { children, className, node, ref, ...rest } = props
+                            const match = /language-(\w+)/.exec(className || '')
+                            return match ? (
+                                <SyntaxHighlighter
+                                    {...rest}
+                                    PreTag="div"
+                                    children={String(children).replace(/\n$/, '')}
+                                    language={match[1]}
+                                    style={dracula}
+                                />
+                            ) : (
+                                <code {...rest} className={className}>
+                                    {children}
+                                </code>
+                            )
+                        }
                     }}
                 >
                     {content}

@@ -1,6 +1,6 @@
 ---
 title: "How to Customize Vending Mocha 🎨"
-date: "2024-01-03"
+date: "2026-02-17 03:00:00"
 summary: "A quick guide on how to update the configuration, styling, and content of your new blog."
 ---
 
@@ -28,7 +28,7 @@ export const siteConfig = {
 
 Add new `.md` files with frontmatter to `/projects/` to add your projects.
 
-```
+```markdown
 ---
 title: "My Project"
 description: "What is it?"

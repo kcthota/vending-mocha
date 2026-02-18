@@ -27,6 +27,7 @@ function generatePostsData() {
             title: data.title || 'Untitled',
             date: data.date || 'Unknown Date',
             summary: data.summary || '',
+            weight: data.weight || 0
         };
     });
 

@@ -118,7 +118,7 @@ h1 {
 .blog-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0;
   text-align: left;
 }
 
@@ -480,8 +480,6 @@ code {
 }
 
 .markdown-content pre {
-  background: var(--color-card-bg);
-  padding: 1.5rem;
   border-radius: 8px;
   overflow-x: auto;
 }
