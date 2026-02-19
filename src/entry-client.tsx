@@ -4,7 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import * as ReactHelmetAsync from 'react-helmet-async'
 import App from './App'
 
-const { HelmetProvider } = (ReactHelmetAsync as any).default || ReactHelmetAsync;
+const helmetAsync = ReactHelmetAsync as any;
+const { HelmetProvider } = helmetAsync.default || helmetAsync;
 
 const container = document.getElementById('root')!
 

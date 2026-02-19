@@ -5,7 +5,8 @@ import * as ReactHelmetAsync from 'react-helmet-async';
 import { siteConfig } from '../site.config';
 import { formatDate } from '../utils/date';
 
-const { Helmet } = (ReactHelmetAsync as any).default || ReactHelmetAsync;
+const helmetAsync = ReactHelmetAsync as any;
+const { Helmet } = helmetAsync.default || helmetAsync;
 
 const POSTS_PER_PAGE = 50;
 

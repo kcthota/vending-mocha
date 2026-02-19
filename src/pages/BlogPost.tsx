@@ -1,4 +1,7 @@
 import { useParams } from 'react-router-dom';
+import * as ReactHelmetAsync from 'react-helmet-async';
+const helmetAsync = ReactHelmetAsync as any;
+const { Helmet } = helmetAsync.default || helmetAsync;
 import { siteConfig } from '../site.config';
 import SiteHeader from '../components/SiteHeader';
 import Markdown from 'react-markdown';
@@ -54,7 +57,11 @@ export default function BlogPost() {
     return (
         <div className="blog-container">
             <SiteHeader />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <Helmet>
+                <script type='application/ld+json'>
+                    {JSON.stringify(jsonLd)}
+                </script>
+            </Helmet>
             <header>
                 <h1>{postMeta.title}</h1>
                 <div className="meta">

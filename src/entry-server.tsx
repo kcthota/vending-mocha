@@ -6,7 +6,8 @@ import App from './App'
 import { siteConfig } from './site.config'
 export { siteConfig }
 
-const { HelmetProvider } = (ReactHelmetAsync as any).default || ReactHelmetAsync;
+const helmetAsync = ReactHelmetAsync as any;
+const { HelmetProvider } = helmetAsync.default || helmetAsync;
 
 import { getBasePath } from './utils/basePath';
 
