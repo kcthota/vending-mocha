@@ -16,13 +16,14 @@ Welcome to **Vending Mocha**! This is a sample post. You can edit this file or a
 - **SSG**: Static Site Generation for optimal performance.
 - **Theme Support**: Customize your blog with different themes.
 - **Deployment**: Ready for GitHub Pages deployment.
+- **AI ready**: Fully compatible with Antigravity for setup, deployment and content generation.
 
 ### Getting Started
 
 To create a new Vending Mocha blog, run the following command in your terminal:
 
 ```bash
-npx vending-mocha new <my-blog>
+npx vending-mocha@latest new <my-blog>
 ```
 
 Follow the interactive prompts to set up your blog's configuration.
