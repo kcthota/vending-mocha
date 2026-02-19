@@ -12,6 +12,8 @@ import { Command } from 'commander';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'));
+
 const IGNORE_FILES = [
     'node_modules',
     '.git',
@@ -422,7 +424,7 @@ const program = new Command();
 program
     .name('vending-mocha')
     .description('A personal blogging framework for developers')
-    .version('0.0.0')
+    .version(pkg.version)
     .addHelpText('before', getAsciiArt());
 
 program.command('new')
