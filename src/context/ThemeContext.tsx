@@ -31,7 +31,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         root.style.setProperty('--color-background', themeConfig.background);
         root.style.setProperty('--color-text', themeConfig.text);
         root.style.setProperty('--color-border', themeConfig.border);
-        root.style.setProperty('--color-accent', themeConfig.accent);
         root.style.setProperty('--color-card-bg', themeConfig.cardBackground);
         root.style.setProperty('--color-link-hover', themeConfig.linkHover);
         root.style.setProperty('--color-link', themeConfig.linkColor);
