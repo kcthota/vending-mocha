@@ -220,35 +220,11 @@ async function handleNew(projectName, options) {
         });
     }
 
-    questions.push({
-        type: 'input',
-        name: 'title',
-        message: 'What is the title of your blog?',
-        default: (answers) => answers.projectName || projectName
-    });
-
-    questions.push({
-        type: 'input',
-        name: 'url',
-        message: 'What is the production URL of your blog?',
-        default: (answers) => `https://example.com/${answers.projectName || projectName}`
-    });
-
-    questions.push({
-        type: 'input',
-        name: 'description',
-        message: 'Write a short description for your blog:',
-        default: 'A personal blogging framework for developers.'
-    });
-
     const answers = await inquirer.prompt(questions);
 
     // Merge args and answers
     const config = {
         projectName: projectName || answers.projectName,
-        title: answers.title,
-        url: answers.url,
-        description: answers.description
     };
 
     const currentDir = process.cwd();
@@ -271,24 +247,8 @@ async function handleNew(projectName, options) {
 
         // 2. Update config
         console.log(chalk.gray('Updating configuration...'));
-        updateSiteConfig(projectDir, config);
-        console.log(chalk.green('✔ Configuration updated'));
-
-        // 3. Update package.json
-        console.log(chalk.gray('Updating package.json...'));
         updatePackageJson(projectDir, config);
         console.log(chalk.green('✔ package.json updated'));
-
-        // 4. Initialize Git
-        console.log(chalk.gray('Initializing git repository...'));
-        try {
-            execSync('git init', { cwd: projectDir, stdio: 'ignore' });
-            execSync('git add .', { cwd: projectDir, stdio: 'ignore' });
-            execSync('git commit -m "Initial commit from vending-mocha"', { cwd: projectDir, stdio: 'ignore' });
-            console.log(chalk.green('✔ Git initialized'));
-        } catch (e) {
-            console.warn(chalk.yellow('⚠ Failed to initialize git repository (git might not be installed).'));
-        }
 
         console.log(chalk.green(`\nSuccess! Created ${config.projectName} at ${projectDir}`));
         console.log('\nInside that directory, you can run:');
