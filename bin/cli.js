@@ -22,7 +22,8 @@ const IGNORE_FILES = [
     'docs',
     'bin',
     'package-lock.json',
-    '.DS_Store'
+    '.DS_Store',
+    'LICENSE'
 ];
 
 function getAsciiArt() {
@@ -179,6 +180,7 @@ function updatePackageJson(projectDir, config) {
             pkg.name = config.projectName;
             pkg.version = '0.0.0';
             pkg.description = config.description || `My new blog built with vending-mocha`;
+            pkg.license = 'Unknown';
 
             // Remove the bin entry so the new project doesn't try to be a CLI itself
             if (pkg.bin) {
