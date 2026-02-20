@@ -24,5 +24,3 @@ docs
 *.sln
 *.sw?
 
-src/posts.json
-src/projects.json

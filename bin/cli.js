@@ -2,7 +2,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
@@ -150,25 +149,6 @@ function copyRecursiveSync(src, dest, destRoot) {
         });
     } else {
         fs.copyFileSync(src, dest);
-    }
-}
-
-function updateSiteConfig(projectDir, config) {
-    const configPath = path.join(projectDir, 'src', 'site.config.ts');
-    if (fs.existsSync(configPath)) {
-        let content = fs.readFileSync(configPath, 'utf8');
-
-        // Update title
-        if (config.title) {
-            content = content.replace(/title:\s*".*?"/, `title: "${config.title}"`);
-        }
-
-        // Update URL
-        if (config.url) {
-            content = content.replace(/url:\s*".*?"/, `url: "${config.url}"`);
-        }
-
-        fs.writeFileSync(configPath, content, 'utf8');
     }
 }
 
