@@ -232,6 +232,39 @@ async function handleNew(projectName, options) {
         updatePackageJson(projectDir, config);
         console.log(chalk.green('✔ package.json updated'));
 
+        // 3. Create .gitignore (since npm pack ignores it)
+        const gitignorePath = path.join(projectDir, '.gitignore');
+        if (!fs.existsSync(gitignorePath)) {
+            const gitignoreContent = `# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+docs
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+`;
+            fs.writeFileSync(gitignorePath, gitignoreContent);
+            console.log(chalk.green('✔ .gitignore created'));
+        }
+
         console.log(chalk.green(`\nSuccess! Created ${config.projectName} at ${projectDir}`));
         console.log('\nInside that directory, you can run:');
         console.log(chalk.cyan(`  cd ${config.projectName}`));
