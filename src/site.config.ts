@@ -3,7 +3,7 @@
 export const siteConfig = {
     title: "Vending Mocha",
     url: "https://vendingmocha.com",
-    description: '**Vending Mocha** is a lightweight, blazing fast personal blogging framework built with React.\n\nIt is designed to be minimal, easy to customize, and deployed within minutes. Create a site, update the config, and deploy to Github Pages!\n\nSimply write your new posts in markdown files and Vending Mocha will publish them as static HTML files to your site.',
+    description: '**Vending Mocha** is a lightweight, blazing fast personal blogging framework built with React.\n\nIt is designed to be minimal, easy to customize, and deployed within minutes. Create a site, update the config, and deploy to Github Pages!\n\nSimply write your new posts in markdown files and Vending Mocha will publish them as static HTML files to your site.\n\nTo get started:\n`npx vending-mocha@latest new <my-blog>`',
     image: '/images/profile.png',
     contact: {
         github: "https://github.com/kcthota/vending-mocha",

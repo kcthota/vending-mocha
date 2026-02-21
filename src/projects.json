@@ -7,16 +7,16 @@
     "weight": 10
   },
   {
-    "name": "Task Master 3000",
-    "description": "A productivity application for managing daily tasks and goals efficiently.",
-    "link": "https://example.com/task-master",
+    "name": "Placeholder 1",
+    "description": "A Placeholder description for the project",
+    "link": "https://example.com/",
     "status": "inactive",
     "weight": 5
   },
   {
-    "name": "Legacy API Wrapper",
-    "description": "An old library I wrote back in 2018. No longer maintained but good for reference.",
-    "link": "https://example.com/legacy-api",
+    "name": "Placeholder 2",
+    "description": "A placeholder description for the project",
+    "link": "https://example.com/",
     "status": "dead",
     "weight": 1
   }
