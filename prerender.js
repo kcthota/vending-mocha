@@ -37,7 +37,7 @@ async function prerender() {
     const normalizedBasePath = basePath;
 
     // 3. Determine routes to prerender
-    const routesToPrerender = ['/', '/projects/'];
+    const routesToPrerender = ['/', '/projects/', '/life/'];
 
     // Add blog post routes and pagination
     const postsPath = toAbsolute('src/posts.json');
