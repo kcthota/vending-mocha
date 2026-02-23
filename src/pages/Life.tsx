@@ -134,22 +134,7 @@ export default function Life() {
                                 </div>
                             </div>
 
-                            <div className="life-legend">
-                                <div className="legend-item">
-                                    <div className="life-week past"></div>
-                                    <span>Passed Week</span>
-                                </div>
-                                <div className="legend-item">
-                                    <div className="life-week"></div>
-                                    <span>Future Week</span>
-                                </div>
-                                {events.map((event, i) => (
-                                    <div className="legend-item" key={`legend-${i}`}>
-                                        <div className="life-week event" style={{ backgroundColor: event.color }}></div>
-                                        <span>{event.title || event.description || 'Event'}</span>
-                                    </div>
-                                ))}
-                            </div>
+
                         </div>
                     )}
                 </div>

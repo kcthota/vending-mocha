@@ -1,5 +1,12 @@
 [
   {
+    "slug": "life-in-weeks-feature",
+    "title": "Introducing the Life in Weeks Feature ⏳",
+    "date": "2026-02-22",
+    "summary": "A new feature to visualize your life in weeks",
+    "weight": 0
+  },
+  {
     "slug": "hello-world",
     "title": "Welcome to Vending Mocha ☕",
     "date": "2026-02-17 04:00:00",

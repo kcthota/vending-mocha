@@ -550,26 +550,6 @@ code {
 
 
 
-.life-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-}
-
-.legend-item .life-week {
-  width: 16px;
-  height: 16px;
-}
-
 .empty-state {
   margin-top: 4rem;
   padding: 3rem;
