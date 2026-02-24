@@ -11,9 +11,9 @@
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Markdown Features Demo 📝",
-        "datePublished": "2026-02-17 02:00:00",
-        "description": "A demonstration of the Markdown features supported by Vending Mocha, including code blocks, lists, and formatting.",
+        "headline": "Introducing the Life in Weeks Feature ⏳",
+        "datePublished": "2026-02-22",
+        "description": "A new feature to visualize your life in weeks",
         "author": {
           "@type": "Person",
           "name": "Vending Mocha",
@@ -21,7 +21,7 @@
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://vendingmocha.com/post/markdown-features"
+          "@id": "https://vendingmocha.com/post/life-in-weeks-feature"
         }
       }
     </script>
@@ -38,7 +38,6 @@
 
   <body>
     <div id="root">
-      <link rel="preload" as="image" href="/images/profile.png" />
       <div class="app-wrapper container">
         <div class="blog-container">
           <header class="main-header with-bottom-border">
@@ -151,76 +150,87 @@
             </div>
           </header>
           <header>
-            <h1>Markdown Features Demo 📝</h1>
-            <div class="meta"><span>February 17, 2026</span></div>
+            <h1>Introducing the Life in Weeks Feature ⏳</h1>
+            <div class="meta"><span>February 22, 2026</span></div>
           </header>
           <div class="markdown-content">
-            <h2>Markdown Features</h2>
             <p>
-              <strong>Vending Mocha</strong> isn&#x27;t just about text; it
-              supports a wide range of Markdown features to help you write rich
-              content.
+              <strong>Life in Weeks</strong> ⏳. This feature allows you to
+              visualize your entire life, past, present, and future, as a grid
+              of small squares 🟩, where each square represents a single week.
             </p>
-            <h3>Typography</h3>
             <p>
-              You can use <strong>bold</strong>, <em>italics</em>, and
-              <del>strikethrough</del> text.
+              This feature was deeply inspired by 💡: the
+              <strong
+                ><a href="https://lifeweeks.app/">Life in Weeks App</a></strong
+              >
+              which in turn was inspired by
+              <strong
+                ><a href="https://waitbutwhy.com/2014/05/life-weeks.html"
+                  >Tim Urban&#x27;s Wait But Why</a
+                ></strong
+              >.
             </p>
-            <blockquote>
-              <p>
-                &quot;Blockquotes are great for emphasizing important
-                information or quoting sources.&quot;
-              </p>
-            </blockquote>
-            <h3>Lists</h3>
-            <h4>Unordered List</h4>
-            <ul>
-              <li>Item 1</li>
+            <h2>📝 How to Add Life Events</h2>
+            <p>
+              Adding your life events is simple! ✨ You just need to create
+              Markdown files in your <code>life/</code> directory with the
+              relevant frontmatter details. Here&#x27;s a step-by-step guide:
+            </p>
+            <ol>
               <li>
-                Item 2<!-- -->
-                <ul>
-                  <li>Subitem 2.1</li>
-                  <li>Subitem 2.2</li>
-                </ul>
+                📁 <strong>Create a file:</strong> In your project&#x27;s root
+                folder, find the <code>life/</code> directory (create it if it
+                doesn&#x27;t exist). Create a new <code>.md</code> file inside,
+                such as <code>my-birthday.md</code>.
+              </li>
+              <li>
+                ✍️ <strong>Add Frontmatter:</strong> Open the file and add the
+                following frontmatter at the top:
+              </li>
+            </ol>
+            <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-yaml" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#f8f8f2">---</span><span>
+</span><span></span><span class="token key" style="color:#f1fa8c">title</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;Turned 18!&quot;</span><span>
+</span><span></span><span class="token key" style="color:#f1fa8c">date</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;2010-05-15&quot;</span><span> </span><span class="token" style="color:#6272a4"># for security reasons, we also support YYYY-MM format</span><span>
+</span><span></span><span class="token key" style="color:#f1fa8c">color</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;#0d8427ff&quot;</span><span>
+</span><span></span><span class="token key" style="color:#f1fa8c">description</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;Finally an adult! Had a huge party with friends.&quot;</span><span>
+</span><span></span><span class="token key" style="color:#f1fa8c">tags</span><span class="token" style="color:#f8f8f2">:</span><span>
+</span><span>  </span><span class="token" style="color:#f8f8f2">-</span><span> </span><span class="token" style="color:#50fa7b">&quot;milestone&quot;</span><span>
+</span><span>  </span><span class="token" style="color:#f8f8f2">-</span><span> </span><span class="token" style="color:#50fa7b">&quot;birthday&quot;</span><span>
+</span><span></span><span class="token" style="color:#f8f8f2">---</span></code></div></pre>
+            <h3>📋 Frontmatter Fields Explanation</h3>
+            <ul>
+              <li>
+                🏷️ <strong><code>title</code></strong
+                >: The title of the event (shown on the timeline).
+              </li>
+              <li>
+                📅 <strong><code>date</code></strong
+                >: The date of the event in <code>YYYY-MM-DD</code> format (or
+                just <code>YYYY-MM</code> if you only know the month).
+              </li>
+              <li>
+                🎨 <strong><code>color</code></strong> <em>(optional)</em>: A
+                custom hex color code for this specific event&#x27;s block.
+                Defaults to a dark gray (<code>#333333</code>) if not provided.
+                The <code>site.config.ts</code> handles light/dark mode
+                overrides if applicable!
+              </li>
+              <li>
+                📜 <strong><code>description</code></strong>
+                <em>(optional)</em>: A more detailed description of the event
+                that will show up when lingering on the specific week.
+              </li>
+              <li>
+                🔖 <strong><code>tags</code></strong> <em>(optional)</em>: A
+                list of tags categorized for your event.
               </li>
             </ul>
-            <h4>Ordered List</h4>
-            <ol>
-              <li>First step</li>
-              <li>Second step</li>
-              <li>Third step</li>
-            </ol>
-            <h3>Code Blocks</h3>
-            <p>You can write code blocks with syntax highlighting!</p>
-            <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-typescript" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#8be9fd">interface</span><span> </span><span class="token" style="color:#f1fa8c">User</span><span> </span><span class="token" style="color:#f8f8f2">{</span><span>
-</span><span>  id</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">number</span><span class="token" style="color:#f8f8f2">;</span><span>
-</span><span>  name</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">string</span><span class="token" style="color:#f8f8f2">;</span><span>
-</span><span>  role</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&#x27;admin&#x27;</span><span> </span><span class="token" style="color:#f8f8f2">|</span><span> </span><span class="token" style="color:#50fa7b">&#x27;user&#x27;</span><span class="token" style="color:#f8f8f2">;</span><span>
-</span><span></span><span class="token" style="color:#f8f8f2">}</span><span>
-</span>
-<span></span><span class="token" style="color:#8be9fd">const</span><span> getUser </span><span class="token" style="color:#f8f8f2">=</span><span> </span><span class="token" style="color:#f8f8f2">(</span><span>id</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">number</span><span class="token" style="color:#f8f8f2">)</span><span class="token" style="color:#f8f8f2">:</span><span> User </span><span class="token" style="color:#f8f8f2">=&gt;</span><span> </span><span class="token" style="color:#f8f8f2">{</span><span>
-</span><span>  </span><span class="token" style="color:#8be9fd">return</span><span> </span><span class="token" style="color:#f8f8f2">{</span><span>
-</span><span>    id</span><span class="token" style="color:#f8f8f2">,</span><span>
-</span><span>    name</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&#x27;Jane Doe&#x27;</span><span class="token" style="color:#f8f8f2">,</span><span>
-</span><span>    role</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&#x27;admin&#x27;</span><span>
-</span><span>  </span><span class="token" style="color:#f8f8f2">}</span><span class="token" style="color:#f8f8f2">;</span><span>
-</span><span></span><span class="token" style="color:#f8f8f2">}</span><span class="token" style="color:#f8f8f2">;</span></code></div></pre>
-            <h3>Links and Images</h3>
             <p>
-              You can link to <a href="https://google.com">Google</a> or
-              internal pages.
+              Once you add the markdown file with these details, our build
+              scripts will pick them up and update your Life in Weeks board
+              automatically. 🚀
             </p>
-            <p>
-              <img
-                src="/images/profile.png"
-                alt="Vending Mocha"
-                width="300"
-                height="300"
-                style="width: 300px; height: 300px"
-                node="[object Object]"
-              />
-            </p>
-            <p>Happy writing! ✍️</p>
           </div>
         </div>
       </div>
