@@ -296,7 +296,7 @@ async function handleUpgrade() {
     }
 
     console.log(chalk.yellow('WARNING: This will overwrite project files to the latest version of vending-mocha.'));
-    console.log(chalk.yellow('Your content (posts/, projects/) and configuration (src/site.config.ts) will be preserved.'));
+    console.log(chalk.yellow('Your content (posts/, projects/, life/) and configuration (src/site.config.ts) will be preserved.'));
     console.log(chalk.yellow('Please ensure you have committed your changes before proceeding.'));
 
     const { proceed } = await inquirer.prompt([
@@ -361,6 +361,71 @@ async function handleUpgrade() {
         spinner.start();
         copyUpgradeSync(templateDir, currentDir);
         spinner.succeed();
+
+        // 2.5 Merge site.config.ts
+        try {
+            const userConfigPath = path.join(currentDir, 'src', 'site.config.ts');
+            const templateConfigPath = path.join(templateDir, 'src', 'site.config.ts');
+
+            if (fs.existsSync(userConfigPath) && fs.existsSync(templateConfigPath)) {
+                console.log(chalk.gray('Merging src/site.config.ts...'));
+                const templateConfigRaw = fs.readFileSync(templateConfigPath, 'utf8');
+                const tplMatch = templateConfigRaw.match(/([\s\S]*?)(export\s+const\s+siteConfig\s*=\s*)(\{[\s\S]*\});?\s*$/);
+
+                const userConfigRaw = fs.readFileSync(userConfigPath, 'utf8');
+                const userMatch = userConfigRaw.match(/([\s\S]*?)(export\s+const\s+siteConfig\s*=\s*)(\{[\s\S]*\});?\s*$/);
+
+                if (tplMatch && userMatch) {
+                    const templateConfig = eval('(' + tplMatch[3] + ')');
+                    const userPrefix = userMatch[1] + userMatch[2];
+                    const userConfig = eval('(' + userMatch[3] + ')');
+
+                    function mergeConfigs(target, source) {
+                        for (const key in source) {
+                            if (source[key] !== null && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+                                if (!target[key] || typeof target[key] !== 'object') {
+                                    target[key] = {};
+                                }
+                                mergeConfigs(target[key], source[key]);
+                            } else if (target[key] === undefined) {
+                                target[key] = source[key];
+                            }
+                        }
+                        return target;
+                    }
+
+                    const mergedConfig = mergeConfigs(userConfig, templateConfig);
+
+                    function stringifyConfig(obj, indent = 0) {
+                        if (obj === undefined) return 'undefined';
+                        if (obj === null) return 'null';
+                        if (typeof obj === 'string') return JSON.stringify(obj);
+                        if (typeof obj === 'number' || typeof obj === 'boolean') return String(obj);
+                        if (Array.isArray(obj)) {
+                            if (obj.length === 0) return '[]';
+                            const items = obj.map(item => ' '.repeat(indent + 4) + stringifyConfig(item, indent + 4));
+                            return `[\n${items.join(',\n')}\n${' '.repeat(indent)}]`;
+                        }
+                        if (typeof obj === 'object') {
+                            const entries = Object.entries(obj);
+                            if (entries.length === 0) return '{}';
+                            const lines = entries.map(([key, value]) => {
+                                const safeKey = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ? key : JSON.stringify(key);
+                                return `${' '.repeat(indent + 4)}${safeKey}: ${stringifyConfig(value, indent + 4)}`;
+                            });
+                            return `{\n${lines.join(',\n')}\n${' '.repeat(indent)}}`;
+                        }
+                        return String(obj);
+                    }
+
+                    const outputStr = userPrefix + stringifyConfig(mergedConfig, 0) + ';\n';
+                    fs.writeFileSync(userConfigPath, outputStr);
+                    console.log(chalk.green('✔ src/site.config.ts merged'));
+                }
+            }
+        } catch (e) {
+            console.warn(chalk.yellow('Failed to merge src/site.config.ts: ' + e.message));
+        }
 
         // 3. Merge package.json
         console.log(chalk.gray('Merging package.json...'));

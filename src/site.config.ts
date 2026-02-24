@@ -20,6 +20,7 @@ export const siteConfig = {
             cardBackground: "#eee",
             linkHover: "#000",
             linkColor: "#222",
+            lifeWeek: "#ddd"
         },
         dark: {
             primary: "#fff",
@@ -30,6 +31,7 @@ export const siteConfig = {
             cardBackground: "#373636ff",
             linkHover: "#fff",
             linkColor: "#ccc",
+            lifeWeek: "#bbb",
         },
         fontFamily: "Avenir, Open Sans, sans-serif",
     },
