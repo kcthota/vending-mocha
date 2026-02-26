@@ -296,7 +296,7 @@ async function handleUpgrade() {
     }
 
     console.log(chalk.yellow('WARNING: This will overwrite project files to the latest version of vending-mocha.'));
-    console.log(chalk.yellow('Your content (posts/, projects/, life/) and configuration (src/site.config.ts) will be preserved.'));
+    console.log(chalk.yellow('Your content (posts/, projects/, life/, static/) and configuration (src/site.config.ts) will be preserved.'));
     console.log(chalk.yellow('Please ensure you have committed your changes before proceeding.'));
 
     const { proceed } = await inquirer.prompt([
@@ -321,6 +321,8 @@ async function handleUpgrade() {
             ...IGNORE_FILES,
             'posts',
             'projects',
+            'life',
+            'static',
             'src/site.config.ts', // Important: Preserve config
             'package.json'        // We handle this separately
         ];
