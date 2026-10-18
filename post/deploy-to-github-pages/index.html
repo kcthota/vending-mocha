@@ -36,15 +36,15 @@
       title="RSS Feed for Krishna Thota"
       href="/rss.xml"
     />
-    <script src="/assets/theme.drbdbb22.js"></script>
+    <script src="/assets/theme.5ohr2pfm.js"></script>
 
-    <link rel="stylesheet" crossorigin href="/assets/index-C-nZdkzp.css" />
+    <link rel="stylesheet" crossorigin href="/assets/index-BNlfhCIP.css" />
   </head>
 
   <body>
     <div id="root">
       <div class="app-wrapper container">
-        <div class="blog-container">
+        <div class="blog-container post-page-container">
           <header class="main-header with-bottom-border">
             <div class="header-title">
               <h1 class="site-title">
@@ -154,56 +154,60 @@
               </div>
             </div>
           </header>
-          <header>
-            <h1>Deploying to GitHub Pages 🚀</h1>
-            <div class="meta"><span>February 17, 2026</span></div>
-          </header>
-          <div class="markdown-content">
-            <p>
-              Deploying your Vending Mocha blog to GitHub Pages is
-              straightforward. We&#x27;ll use GitHub Actions to automatically
-              build and deploy your site whenever you push changes to the
-              <code>main</code> branch.
-            </p>
-            <h2>Prerequisites</h2>
-            <ol>
-              <li>A GitHub account.</li>
-              <li>A Vending Mocha project pushed to a GitHub repository.</li>
-            </ol>
-            <h2>Step 1: Configure Your Site</h2>
-            <p>
-              Open <code>src/site.config.ts</code> and ensure the
-              <code>url</code> property matches your GitHub Pages URL.
-            </p>
-            <p>If you are using a custom domain:</p>
-            <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-typescript" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#8be9fd">export</span><span> </span><span class="token" style="color:#8be9fd">const</span><span> siteConfig </span><span class="token" style="color:#f8f8f2">=</span><span> </span><span class="token" style="color:#f8f8f2">{</span><span>
+          <div class="post-layout">
+            <main class="post-main">
+              <header>
+                <h1>Deploying to GitHub Pages 🚀</h1>
+                <div class="meta"><span>February 17, 2026</span></div>
+              </header>
+              <div class="markdown-content">
+                <p>
+                  Deploying your Vending Mocha blog to GitHub Pages is
+                  straightforward. We&#x27;ll use GitHub Actions to
+                  automatically build and deploy your site whenever you push
+                  changes to the <code>main</code> branch.
+                </p>
+                <h2>Prerequisites</h2>
+                <ol>
+                  <li>A GitHub account.</li>
+                  <li>
+                    A Vending Mocha project pushed to a GitHub repository.
+                  </li>
+                </ol>
+                <h2>Step 1: Configure Your Site</h2>
+                <p>
+                  Open <code>src/site.config.ts</code> and ensure the
+                  <code>url</code> property matches your GitHub Pages URL.
+                </p>
+                <p>If you are using a custom domain:</p>
+                <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-typescript" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#8be9fd">export</span><span> </span><span class="token" style="color:#8be9fd">const</span><span> siteConfig </span><span class="token" style="color:#f8f8f2">=</span><span> </span><span class="token" style="color:#f8f8f2">{</span><span>
 </span><span>    title</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;My Blog&quot;</span><span class="token" style="color:#f8f8f2">,</span><span>
 </span><span>    url</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;https://www.example.com&quot;</span><span class="token" style="color:#f8f8f2">,</span><span> </span><span class="token" style="color:#6272a4">// Your custom domain</span><span>
 </span><span>    </span><span class="token" style="color:#6272a4">// ...</span><span>
 </span><span></span><span class="token" style="color:#f8f8f2">}</span><span class="token" style="color:#f8f8f2">;</span></code></div></pre>
-            <p>
-              If you are using the default GitHub Pages URL
-              (<code>username.github.io/repo-name</code>):
-            </p>
-            <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-typescript" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#8be9fd">export</span><span> </span><span class="token" style="color:#8be9fd">const</span><span> siteConfig </span><span class="token" style="color:#f8f8f2">=</span><span> </span><span class="token" style="color:#f8f8f2">{</span><span>
+                <p>
+                  If you are using the default GitHub Pages URL
+                  (<code>username.github.io/repo-name</code>):
+                </p>
+                <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-typescript" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#8be9fd">export</span><span> </span><span class="token" style="color:#8be9fd">const</span><span> siteConfig </span><span class="token" style="color:#f8f8f2">=</span><span> </span><span class="token" style="color:#f8f8f2">{</span><span>
 </span><span>    title</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;My Blog&quot;</span><span class="token" style="color:#f8f8f2">,</span><span>
 </span><span>    url</span><span class="token" style="color:#f8f8f2">:</span><span> </span><span class="token" style="color:#50fa7b">&quot;https://username.github.io/repo-name&quot;</span><span class="token" style="color:#f8f8f2">,</span><span> </span><span class="token" style="color:#6272a4">// REPLACE with your actual URL</span><span>
 </span><span>    </span><span class="token" style="color:#6272a4">// ...</span><span>
 </span><span></span><span class="token" style="color:#f8f8f2">}</span><span class="token" style="color:#f8f8f2">;</span></code></div></pre>
-            <blockquote>
-              <p>
-                <strong>Important:</strong> The <code>url</code> setting is
-                critical for asset loading, especially if your site is hosted in
-                a subdirectory (like <code>/repo-name/</code>).
-              </p>
-            </blockquote>
-            <h2>Step 2: Create the GitHub Actions Workflow</h2>
-            <p>
-              Create a new file in your repository at
-              <code>.github/workflows/deploy.yml</code> and paste the following
-              content:
-            </p>
-            <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-yaml" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token key" style="color:#f1fa8c">name</span><span class="token" style="color:#f8f8f2">:</span><span> Deploy to GitHub Pages
+                <blockquote>
+                  <p>
+                    <strong>Important:</strong> The <code>url</code> setting is
+                    critical for asset loading, especially if your site is
+                    hosted in a subdirectory (like <code>/repo-name/</code>).
+                  </p>
+                </blockquote>
+                <h2>Step 2: Create the GitHub Actions Workflow</h2>
+                <p>
+                  Create a new file in your repository at
+                  <code>.github/workflows/deploy.yml</code> and paste the
+                  following content:
+                </p>
+                <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-yaml" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token key" style="color:#f1fa8c">name</span><span class="token" style="color:#f8f8f2">:</span><span> Deploy to GitHub Pages
 </span>
 <span></span><span class="token key" style="color:#f1fa8c">on</span><span class="token" style="color:#f8f8f2">:</span><span>
 </span><span>  </span><span class="token key" style="color:#f1fa8c">push</span><span class="token" style="color:#f8f8f2">:</span><span>
@@ -240,45 +244,138 @@
 </span><span>          </span><span class="token key" style="color:#f1fa8c">github_token</span><span class="token" style="color:#f8f8f2">:</span><span> $</span><span class="token" style="color:#f8f8f2">{</span><span class="token" style="color:#f8f8f2">{</span><span> secrets.GITHUB_TOKEN </span><span class="token" style="color:#f8f8f2">}</span><span class="token" style="color:#f8f8f2">}</span><span>
 </span><span>          </span><span class="token key" style="color:#f1fa8c">publish_dir</span><span class="token" style="color:#f8f8f2">:</span><span> ./docs
 </span><span>          </span><span class="token key" style="color:#f1fa8c">cname</span><span class="token" style="color:#f8f8f2">:</span><span> your</span><span class="token" style="color:#f8f8f2">-</span><span>domain.com </span><span class="token" style="color:#6272a4"># Optional - if you are using a custom domain</span></code></div></pre>
-            <p>This workflow does the following:</p>
-            <ol>
-              <li>Triggers on every push to <code>main</code>.</li>
-              <li>Sets up Node.js.</li>
-              <li>Installs dependencies.</li>
-              <li>Builds your site (and any sub-projects).</li>
-              <li>
-                Deploys the <code>docs</code> folder (the build output) to the
-                <code>gh-pages</code> branch.
-              </li>
-            </ol>
-            <h2>Step 3: Configure GitHub Pages Settings</h2>
-            <ol>
-              <li>Go to your repository on GitHub.</li>
-              <li>
-                Navigate to <strong>Settings</strong> &gt;
-                <strong>Pages</strong>.
-              </li>
-              <li>
-                Under <strong>Build and deployment</strong>, select
-                <strong>Deploy from a branch</strong>.
-              </li>
-              <li>
-                Under <strong>Branch</strong>, select <code>gh-pages</code> and
-                ensure the folder is <code>/ (root)</code>.
-              </li>
-              <li>Click <strong>Save</strong>.</li>
-            </ol>
-            <h2>Step 4: Push and Verify</h2>
-            <p>Commit and push your changes to GitHub:</p>
-            <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-bash" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#f1fa8c">git</span><span> </span><span class="token" style="color:#f1fa8c">add</span><span> </span><span class="token" style="color:#f1fa8c">.</span><span>
+                <p>This workflow does the following:</p>
+                <ol>
+                  <li>Triggers on every push to <code>main</code>.</li>
+                  <li>Sets up Node.js.</li>
+                  <li>Installs dependencies.</li>
+                  <li>Builds your site (and any sub-projects).</li>
+                  <li>
+                    Deploys the <code>docs</code> folder (the build output) to
+                    the <code>gh-pages</code> branch.
+                  </li>
+                </ol>
+                <h2>Step 3: Configure GitHub Pages Settings</h2>
+                <ol>
+                  <li>Go to your repository on GitHub.</li>
+                  <li>
+                    Navigate to <strong>Settings</strong> &gt;
+                    <strong>Pages</strong>.
+                  </li>
+                  <li>
+                    Under <strong>Build and deployment</strong>, select
+                    <strong>Deploy from a branch</strong>.
+                  </li>
+                  <li>
+                    Under <strong>Branch</strong>, select
+                    <code>gh-pages</code> and ensure the folder is
+                    <code>/ (root)</code>.
+                  </li>
+                  <li>Click <strong>Save</strong>.</li>
+                </ol>
+                <h2>Step 4: Push and Verify</h2>
+                <p>Commit and push your changes to GitHub:</p>
+                <pre><div style="color:#f8f8f2;background:#282a36;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;padding:1em;margin:.5em 0;overflow:auto;border-radius:0.3em"><code class="language-bash" style="white-space:pre;color:#f8f8f2;background:none;text-shadow:0 1px rgba(0, 0, 0, 0.3);font-family:Consolas, Monaco, &#x27;Andale Mono&#x27;, &#x27;Ubuntu Mono&#x27;, monospace;text-align:left;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none"><span class="token" style="color:#f1fa8c">git</span><span> </span><span class="token" style="color:#f1fa8c">add</span><span> </span><span class="token" style="color:#f1fa8c">.</span><span>
 </span><span></span><span class="token" style="color:#f1fa8c">git</span><span> commit </span><span class="token parameter" style="color:#f8f8f2">-m</span><span> </span><span class="token" style="color:#50fa7b">&quot;Add deployment workflow&quot;</span><span>
 </span><span></span><span class="token" style="color:#f1fa8c">git</span><span> push origin main</span></code></div></pre>
-            <p>
-              Go to the <strong>Actions</strong> tab in your repository to watch
-              the build progress. Once it completes (green checkmark), your site
-              should be live at the URL you configured!
-            </p>
-            <p>Happy blogging! ☕</p>
+                <p>
+                  Go to the <strong>Actions</strong> tab in your repository to
+                  watch the build progress. Once it completes (green checkmark),
+                  your site should be live at the URL you configured!
+                </p>
+                <p>Happy blogging! ☕</p>
+              </div>
+            </main>
+            <aside class="post-sidebar" aria-label="Previous articles">
+              <div class="sidebar-inner">
+                <div class="sidebar-header">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-book-open sidebar-header-icon"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 7v14"></path>
+                    <path
+                      d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+                    ></path>
+                  </svg>
+                  <h3>Recent Articles</h3>
+                </div>
+                <div class="sidebar-posts-list">
+                  <a
+                    class="sidebar-post-card"
+                    href="/post/life-in-weeks-feature/"
+                    data-discover="true"
+                    ><div class="sidebar-post-body">
+                      <span class="sidebar-post-date">February 22, 2026</span>
+                      <h4 class="sidebar-post-title">
+                        Introducing the Life in Weeks Feature ⏳
+                      </h4>
+                      <p class="sidebar-post-summary">
+                        A new feature to visualize your life in weeks
+                      </p>
+                    </div></a
+                  ><a
+                    class="sidebar-post-card"
+                    href="/post/hello-world/"
+                    data-discover="true"
+                    ><div class="sidebar-post-body">
+                      <span class="sidebar-post-date">February 17, 2026</span>
+                      <h4 class="sidebar-post-title">
+                        Welcome to Vending Mocha ☕
+                      </h4>
+                      <p class="sidebar-post-summary">
+                        Welcome to your new blogging framework! This is a sample
+                        post to get you started.
+                      </p>
+                    </div></a
+                  ><a
+                    class="sidebar-post-card"
+                    href="/post/markdown-features/"
+                    data-discover="true"
+                    ><div class="sidebar-post-body">
+                      <span class="sidebar-post-date">February 17, 2026</span>
+                      <h4 class="sidebar-post-title">
+                        Markdown Features Demo 📝
+                      </h4>
+                      <p class="sidebar-post-summary">
+                        A demonstration of the Markdown features supported by
+                        Vending Mocha, including code blocks, lists, and
+                        formatting.
+                      </p>
+                    </div></a
+                  >
+                </div>
+                <div class="sidebar-footer">
+                  <a class="sidebar-all-link" href="/" data-discover="true"
+                    ><span>All Articles</span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-arrow-right"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path></svg
+                  ></a>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
